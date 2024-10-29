@@ -49,7 +49,7 @@ const lineCurvedDown = (iPosition, height, circle) => {
   return curved;
 };
 
-export default (width, iHeight, centerWidth) => {
+const getPathDown = (width, iHeight, centerWidth) => {
   const height = scale(iHeight);
   const circleWidth = scale(centerWidth) + scale(16);
   return `${line(width, height)} ${lineCurvedDown(
@@ -58,3 +58,5 @@ export default (width, iHeight, centerWidth) => {
     circleWidth,
   )}`;
 };
+
+export default getPathDown;
