@@ -1,6 +1,6 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {NavigationContainer} from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 import { RouteName } from '../helper/routeName';
 import Login from '../containers/Login';
 import colors from '../assets/colors';
@@ -13,7 +13,7 @@ export default function Stacknavigation() {
     <NavigationContainer independent={true}>
       <Stack.Navigator
         initialRouteName={RouteName.logInScreen}
-        screenOptions={{headerShown: false, headerBackTitleVisible: false}}>
+        screenOptions={{ headerShown: false, headerBackTitleVisible: false }}>
         <Stack.Screen
           name={RouteName.logInScreen}
           component={Login}

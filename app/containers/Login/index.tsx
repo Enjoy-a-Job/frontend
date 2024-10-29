@@ -16,6 +16,7 @@ import colors from '@/app/assets/colors';
 import CustomInput from '@/app/components/Input/CustomInput';
 import CustomPassword from '@/app/components/Input/CustomPassword';
 import SvgIcons from '@/app/assets/svgIcons';
+import { RouteName } from '@/app/helper/routeName';
 
 import s from './style';
 
@@ -70,7 +71,10 @@ const Login = ({navigation}: any) => {
                 rememberMe: false,
               }}
               validationSchema={cfg.validationSchema}
-              onSubmit={(values) => console.log(values)}
+              onSubmit={(values) => {
+                console.log(values);
+                navigation.replace(RouteName.bottomTab);
+              }}
             >
               {({ handleChange, handleBlur, handleSubmit, setFieldValue, values, errors }) => (
                 <React.Fragment>

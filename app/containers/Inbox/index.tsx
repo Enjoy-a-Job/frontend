@@ -4,10 +4,10 @@ import {appConstant} from '../../helper/appConstant';
 import SvgIcons from '../../assets/svgIcons';
 import s from './style';
 
-const Sms = ({navigation}: any) => {
+const Inbox = ({navigation}: any) => {
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      headerTitle: `${appConstant.sms}`,
+      headerTitle: 'Inbox',
       headerTitleStyle: s.headerTitle,
       headerLeft: () => (
         <TouchableOpacity
@@ -21,9 +21,9 @@ const Sms = ({navigation}: any) => {
 
   return (
     <View style={s.container}>
-      <Text>Sms</Text>
+      <Text>Inbox</Text>
     </View>
   );
 };
 
-export default Sms;
+export default Inbox;

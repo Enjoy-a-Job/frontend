@@ -1,38 +1,60 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   Text,
   View,
   Dimensions,
 } from 'react-native';
-import getPathDown from '../BottomTab/curve';
-import {Svg, Path} from 'react-native-svg';
-import {scale} from 'react-native-size-scaling';
-import SvgIcons from '../../assets/svgIcons';
-import {hp, wp} from '../../helper/responsiveScreen';
-import colors from '../../assets/colors';
-import Home from '../../containers/Home';
-import Search from '../../containers/Search';
-import Sms from '../../containers/Sms';
-import Profile from '../../containers/Profile';
-import Eduction from '../../containers/Eduction';
+import { Svg, Path } from 'react-native-svg';
+import { scale } from 'react-native-size-scaling';
+
+import { FontText } from '@/app/components';
+import { hp, normalize, wp } from '@/app/helper/responsiveScreen';
+import colors from '@/app/assets/colors';
+import Eduction from '@/app/containers/Eduction';
+import getPathDown from '@/app/navigation/BottomTab/curve';
+import Home from '@/app/containers/Home';
+import Profile from '@/app/containers/Profile';
+import Search from '@/app/containers/Search';
+import Inbox from '@/app/containers/Inbox';
+import SvgIcons from '@/app/assets/svgIcons';
+
 import styles from './style';
+
+const TabIcon = (
+  {
+    focused,
+    Icon,
+    label,
+  }: {
+    focused: boolean,
+    Icon: React.FC<React.SVGProps<SVGSVGElement>>,
+    label?: string,
+  }) => (
+  <>
+    <View style={styles.icon}>
+      {focused && <View style={[styles.border, styles.topBorder]} />}
+      <Icon
+        height={hp(2.5)}
+        width={wp(5.5)}
+        fill={focused ? colors.tabIcon : colors.darkGray}
+      />
+    </View>
+    <FontText
+      name="inter-light"
+      size={normalize(10)}
+      color={colors.gray}
+      style={{ textAlign: 'center' }}
+      pTop={hp(0.5)}>
+      {label}
+    </FontText>
+  </>
+);
 
 const Tab = createBottomTabNavigator();
 export const BottomTabNavigation = () => {
   const maxWidth = Dimensions.get('window').width;
   const returnpathDown = getPathDown(maxWidth, 60, 50);
-
-  const TabIconWithIndicator = ({focused, Icon}: any) => (
-    <View style={styles.icon}>
-      {focused && <View style={[styles.border, styles.topBorder]} />}
-      <Icon
-        height={hp(3)}
-        width={wp(5.5)}
-        fill={focused ? colors.tabIcon : colors.darkGray}
-      />
-    </View>
-  );
 
   return (
     <Tab.Navigator
@@ -42,28 +64,31 @@ export const BottomTabNavigation = () => {
         tabBarStyle: styles.tabContainer,
       }}>
       <Tab.Screen
-        name="Home"
+        name="Inicio"
         component={Home}
         options={{
           headerShown: false,
           tabBarItemStyle: styles.tabView,
-          tabBarIcon: ({focused}) => (
-            <TabIconWithIndicator focused={focused} Icon={SvgIcons.Home} />
-          ),
+          tabBarIcon: ({ focused }) => (
+            <TabIcon
+              focused={focused}
+              Icon={SvgIcons.Home}
+              label="inicio"
+            />),
           tabBarLabel: () => <Text />,
         }}
       />
       <Tab.Screen
-        name="Search"
+        name="Buscar"
         component={Search}
         options={{
           tabBarItemStyle: styles.tabView,
-          tabBarIcon: ({focused}) => (
-            <TabIconWithIndicator
+          tabBarIcon: ({ focused }) => (
+            <TabIcon
               focused={focused}
               Icon={SvgIcons.SearchIcon}
-            />
-          ),
+              label="buscar"
+            />),
           tabBarLabel: () => <Text />,
         }}
       />
@@ -88,13 +113,16 @@ export const BottomTabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Sms"
-        component={Sms}
+        name="Inbox"
+        component={Inbox}
         options={{
           tabBarItemStyle: styles.tabView,
-          tabBarIcon: ({focused}) => (
-            <TabIconWithIndicator focused={focused} Icon={SvgIcons.Sms} />
-          ),
+          tabBarIcon: ({ focused }) => (
+            <TabIcon
+              focused={focused}
+              Icon={SvgIcons.Sms}
+              label="inbox"
+            />),
           tabBarLabel: () => <Text />,
         }}
       />
@@ -103,9 +131,12 @@ export const BottomTabNavigation = () => {
         component={Profile}
         options={{
           tabBarItemStyle: styles.tabView,
-          tabBarIcon: ({focused}) => (
-            <TabIconWithIndicator focused={focused} Icon={SvgIcons.Profile} />
-          ),
+          tabBarIcon: ({ focused }) => (
+            <TabIcon
+              focused={focused}
+              Icon={SvgIcons.Profile}
+              label="profile"
+            />),
           tabBarLabel: () => <Text />,
         }}
       />

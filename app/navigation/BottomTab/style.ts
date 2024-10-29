@@ -51,7 +51,7 @@ export default StyleSheet.create({
     borderBottomLeftRadius: normalize(20),
     borderBottomRightRadius: normalize(20),
     position: 'absolute',
-    top: wp(-3.7),
+    top: wp(-2.8),
     backgroundColor: colors.tabIcon,
   },
 });

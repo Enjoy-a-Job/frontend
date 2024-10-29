@@ -26,7 +26,7 @@ import Home from './svgs/home.svg';
 import Sms from './svgs/sms.svg';
 import Profile from './svgs/profile.svg';
 
-export default {
+const icons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } = {
   ShowIcon,
   HideIcon,
   EmptyCheckbox,
@@ -55,3 +55,5 @@ export default {
   Sms,
   Profile,
 };
+
+export default icons;
