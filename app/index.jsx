@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, ActivityIndicator } from 'react-native';
+import * as SplashScreen from 'expo-splash-screen';
 import useFonts from './assets/fonts.ts';
 import Stacknavigation from './navigation/Stacknavigation.tsx';
+
+SplashScreen.preventAutoHideAsync();
 
 const LoadFonts = async () => {
   await useFonts();
@@ -20,6 +23,7 @@ const App = function App() {
     const loadFonts = async () => {
       await LoadFonts();
       setFontsLoaded(true);
+      await SplashScreen.hideAsync();
     };
     loadFonts();
   }, []);
