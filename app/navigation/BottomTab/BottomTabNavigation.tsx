@@ -5,7 +5,7 @@ import {
   View,
   Dimensions,
 } from 'react-native';
-import {getPathDown} from '../BottomTab/curve';
+import getPathDown from '../BottomTab/curve';
 import {Svg, Path} from 'react-native-svg';
 import {scale} from 'react-native-size-scaling';
 import SvgIcons from '../../assets/svgIcons';
