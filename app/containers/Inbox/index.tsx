@@ -1,13 +1,15 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {appConstant} from '../../helper/appConstant';
 import SvgIcons from '../../assets/svgIcons';
 import s from './style';
+import { useTranslation } from 'react-i18next';
 
 const Inbox = ({navigation}: any) => {
+  const { t } = useTranslation();
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      headerTitle: 'Inbox',
+      headerTitle: t('inbox'),
       headerTitleStyle: s.headerTitle,
       headerLeft: () => (
         <TouchableOpacity
@@ -21,7 +23,7 @@ const Inbox = ({navigation}: any) => {
 
   return (
     <View style={s.container}>
-      <Text>Inbox</Text>
+      <Text>{t('inbox')}</Text>
     </View>
   );
 };

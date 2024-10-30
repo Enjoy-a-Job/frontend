@@ -1,14 +1,15 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { appConstant } from '../../helper/appConstant';
 import SvgIcons from '../../assets/svgIcons';
 import s from './style';
+import { useTranslation } from 'react-i18next';
 
 const Search = ({navigation}: any) => {
+  const { t } = useTranslation();
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      headerTitle: `${appConstant.search}`,
+      headerTitle: t('search'),
       headerTitleStyle: s.headerTitle,
       headerLeft: () => (
         <TouchableOpacity
@@ -22,7 +23,7 @@ const Search = ({navigation}: any) => {
 
   return (
     <View style={s.container}>
-      <Text>Search</Text>
+      <Text>{t('search')}</Text>
     </View>
   );
 };

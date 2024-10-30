@@ -9,7 +9,6 @@ import {
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { appConstant } from '@/app/helper/appConstant';
 import { Button, FontText } from '@/app/components';
 import { hp, normalize, wp } from '@/app/helper/responsiveScreen';
 import colors from '@/app/assets/colors';
@@ -19,19 +18,13 @@ import SvgIcons from '@/app/assets/svgIcons';
 import { RouteName } from '@/app/helper/routeName';
 
 import s from './style';
-
-const cfg = {
-  validationSchema: Yup.object().shape({
-    email: Yup.string().email('Invalid email').required('Email is required'),
-    password: Yup.string().required('Password is required'),
-    rememberMe: Yup.boolean(),
-  }),
-}
+import { useTranslation } from 'react-i18next';
 
 const Login = ({navigation}: any) => {
+  const { t } = useTranslation();
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      headerTitle: appConstant.logIn,
+      headerTitle: t('logIn'),
       headerTitleStyle: s.headerTitle,
       headerLeft: () => (
         <TouchableOpacity style={s.backIcon}>
@@ -40,6 +33,14 @@ const Login = ({navigation}: any) => {
       ),
     });
   }, [navigation]);
+
+  const cfg = {
+    validationSchema: Yup.object().shape({
+      email: Yup.string().email(t('invalidEmail')).required(t('emailRequired')),
+      password: Yup.string().required(t('passwordRequired')),
+      rememberMe: Yup.boolean(),
+    }),
+  }
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -53,7 +54,7 @@ const Login = ({navigation}: any) => {
                 color={colors.black}
                 style={s.headerText}
                 pTop={hp(4)}>
-                {appConstant.welcome}
+                {t('welcome')}
               </FontText>
               <FontText
                 name={'inter-regular'}
@@ -61,7 +62,7 @@ const Login = ({navigation}: any) => {
                 color={colors.gray}
                 style={s.headerText}
                 pTop={hp(2)}>
-                {appConstant.welcomeDescription}
+                {t('welcomeDescription')}
               </FontText>
             </View>
             <Formik
@@ -79,8 +80,8 @@ const Login = ({navigation}: any) => {
               {({ handleChange, handleBlur, handleSubmit, setFieldValue, values, errors }) => (
                 <React.Fragment>
                   <CustomInput
-                    title={appConstant.email}
-                    placeHolder="Enter Email"
+                    title={t('email')}
+                    placeHolder={t('emailPlaceholder')}
                     name="email"
                     handleChange={handleChange}
                     handleBlur={handleBlur}
@@ -88,8 +89,8 @@ const Login = ({navigation}: any) => {
                     error={errors.email}
                   />
                   <CustomPassword
-                    title={appConstant.password}
-                    placeHolder="Enter Password"
+                    title={t('password')}
+                    placeHolder={t('passwordPlaceholder')}
                     name="password"
                     handleChange={handleChange}
                     handleBlur={handleBlur}
@@ -111,14 +112,14 @@ const Login = ({navigation}: any) => {
                         size={normalize(13)}
                         color={colors.darkGray}
                         pLeft={wp(2)}>
-                        {appConstant.rememberMe}
+                        {t('rememberMe')}
                       </FontText>
                     </TouchableOpacity>
                     <FontText
                       name={'inter-regular'}
                       size={normalize(13)}
                       color={colors.darkGray}>
-                      {appConstant.forgotPassword}
+                      {t('forgotPassword')}
                     </FontText>
                   </View>
                   <Button
@@ -130,7 +131,7 @@ const Login = ({navigation}: any) => {
                       name={'poppins-semibold'}
                       size={normalize(16)}
                       color={colors.white}>
-                      {appConstant.logIn}
+                      {t('logIn')}
                     </FontText>
                   </Button>
                   </React.Fragment>
@@ -142,7 +143,7 @@ const Login = ({navigation}: any) => {
                 size={normalize(13)}
                 color={colors.black}
                 pTop={hp(2)}>
-                {appConstant.dontAccount}
+                {t('dontAccount')}
               </FontText>
               <TouchableOpacity>
                 <FontText
@@ -150,7 +151,7 @@ const Login = ({navigation}: any) => {
                   size={normalize(13)}
                   color={colors.primary}
                   pTop={hp(2)}>
-                  {appConstant.signUp}
+                  {t('signUp')}
                 </FontText>
               </TouchableOpacity>
             </View>

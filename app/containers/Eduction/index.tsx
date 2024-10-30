@@ -2,11 +2,14 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import SvgIcons from '../../assets/svgIcons';
 import s from './style';
+import { useTranslation } from 'react-i18next';
 
 const Eduction = ({ navigation }: any) => {
+  const { t } = useTranslation();
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
+      headerTitle: t('education'),
       headerTitleStyle: s.headerTitle,
       headerLeft: () => (
         <TouchableOpacity
@@ -20,7 +23,7 @@ const Eduction = ({ navigation }: any) => {
 
   return (
     <View style={s.container}>
-      <Text>Eduction</Text>
+      <Text>{t('education')}</Text>
     </View>
   );
 };

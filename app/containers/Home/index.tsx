@@ -3,7 +3,6 @@ import React, { useLayoutEffect, useState } from 'react';
 import colors from '../../assets/colors';
 import { normalize } from '../../helper/responsiveScreen';
 import SvgIcons from '../../assets/svgIcons';
-import { appConstant } from '../../helper/appConstant';
 import { FontText } from '../../components';
 import CategoriesList from '../../components/CategoriesList';
 import PopularCoursesList from '../../components/PopularCoursesList';
@@ -16,15 +15,20 @@ import {
 } from '../../helper/constantData';
 import HeaderOfList from '../../components/HeaderOfList';
 import SearchHome from '../../components/SearchHome';
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
+  const { t } = useTranslation();
   const [popularCourses, setPopularCourses] = useState<any>([]);
   const [treadingCourses, setTreadingCourses] = useState<any>([]);
   const [updateState, setUpdateState] = useState<boolean>(false);
+  const categoriesData = CATEGORIES_DATA();
+  const popularCoursesData = POPULAR_COURSES_DATA();
+  const trendingCoursesData = TREADING_COURSES_DATA();
 
   useLayoutEffect(() => {
-    setPopularCourses(POPULAR_COURSES_DATA);
-    setTreadingCourses(TREADING_COURSES_DATA);
+    setPopularCourses(popularCoursesData);
+    setTreadingCourses(trendingCoursesData);
   }, []);
 
   //@ts-ignore
@@ -46,15 +50,15 @@ const Home = () => {
         <SearchHome />
         <View style={{}}>
           <HeaderOfList
-            title={appConstant.TopCategories}
-            rightText={appConstant.SeeAll}
+            title={t('TopCategories')}
+            rightText={t('SeeAll')}
           />
-          <CategoriesList data={CATEGORIES_DATA} />
+          <CategoriesList data={categoriesData} />
         </View>
         <View style={{ marginTop: normalize(10) }}>
           <HeaderOfList
-            title={appConstant.PopularCourses}
-            rightText={appConstant.SeeAll}
+            title={t('PopularCourses')}
+            rightText={t('SeeAll')}
           />
           <PopularCoursesList
             data={popularCourses}
@@ -67,8 +71,8 @@ const Home = () => {
         </View>
         <View style={{ marginTop: normalize(10) }}>
           <HeaderOfList
-            title={appConstant.TreadingCourses}
-            rightText={appConstant.SeeAll}
+            title={t('TreadingCourses')}
+            rightText={t('SeeAll')}
           />
           <TreadingCoursesList
             data={treadingCourses}
@@ -86,7 +90,7 @@ const Home = () => {
             size={normalize(16)}
             style={styles.loactionText}
             color={colors.black}>
-            {appConstant.locationHome}
+            {t('locationHome')}
           </FontText>
           <SvgIcons.Map />
         </View>
