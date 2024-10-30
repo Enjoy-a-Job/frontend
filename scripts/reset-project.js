@@ -2,8 +2,9 @@
 
 /**
  * This script is used to reset the project to a blank state.
- * It moves the /app directory to /app-example and creates a new /app directory with an index.tsx and _layout.tsx file.
- * You can remove the `reset-project` script from package.json and safely delete this file after running it.
+ * It moves the /app directory to /app-example and creates a new /app directory
+ * with an index.tsx and _layout.tsx file. You can remove the `reset-project`
+ * script from package.json and safely delete this file after running it.
  */
 
 const fs = require('fs');
@@ -42,29 +43,33 @@ export default function RootLayout() {
 }
 `;
 
-fs.rename(oldDirPath, newDirPath, (error) => {
-  if (error) {
-    return console.error(`Error renaming directory: ${error}`);
+fs.rename(oldDirPath, newDirPath, (renameError) => {
+  if (renameError) {
+    console.error(`Error renaming directory: ${renameError}`);
+    return; // Ensure consistent return
   }
   console.log('/app moved to /app-example.');
 
-  fs.mkdir(newAppDirPath, { recursive: true }, (error) => {
-    if (error) {
-      return console.error(`Error creating new app directory: ${error}`);
+  fs.mkdir(newAppDirPath, { recursive: true }, (mkdirError) => {
+    if (mkdirError) {
+      console.error(`Error creating new app directory: ${mkdirError}`);
+      return; // Ensure consistent return
     }
     console.log('New /app directory created.');
 
     const indexPath = path.join(newAppDirPath, 'index.tsx');
-    fs.writeFile(indexPath, indexContent, (error) => {
-      if (error) {
-        return console.error(`Error creating index.tsx: ${error}`);
+    fs.writeFile(indexPath, indexContent, (writeIndexError) => {
+      if (writeIndexError) {
+        console.error(`Error creating index.tsx: ${writeIndexError}`);
+        return; // Ensure consistent return
       }
       console.log('app/index.tsx created.');
 
       const layoutPath = path.join(newAppDirPath, '_layout.tsx');
-      fs.writeFile(layoutPath, layoutContent, (error) => {
-        if (error) {
-          return console.error(`Error creating _layout.tsx: ${error}`);
+      fs.writeFile(layoutPath, layoutContent, (writeLayoutError) => {
+        if (writeLayoutError) {
+          console.error(`Error creating _layout.tsx: ${writeLayoutError}`);
+          return; // Ensure consistent return
         }
         console.log('app/_layout.tsx created.');
       });
