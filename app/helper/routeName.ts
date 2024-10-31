@@ -8,6 +8,7 @@ export enum RouteName {
   eductionScreen = 'EductionScreen',
   smsScreen = 'SmsScreen',
   profileScreen = 'ProfileScreen',
+  registerScreen = 'RegisterScreen',
 }
 
 export type RouteStackParamList = {
@@ -20,4 +21,5 @@ export type RouteStackParamList = {
   eductionScreen: undefined;
   smsScreen: undefined;
   profileScreen: undefined;
+  registerScreen: undefined;
 };

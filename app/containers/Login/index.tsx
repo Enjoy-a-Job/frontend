@@ -19,6 +19,7 @@ import { RouteName } from '@/app/helper/routeName';
 
 import s from './style';
 import { useTranslation } from 'react-i18next';
+import { Link } from '@react-navigation/native';
 
 const Login = ({navigation}: any) => {
   const { t } = useTranslation();
@@ -27,7 +28,7 @@ const Login = ({navigation}: any) => {
       headerTitle: t('logIn'),
       headerTitleStyle: s.headerTitle,
       headerLeft: () => (
-        <TouchableOpacity style={s.backIcon}>
+        <TouchableOpacity style={s.backIcon} onPress={() => navigation.navigate(RouteName.welcomeScreen)}>
           <SvgIcons.BackIcon />
         </TouchableOpacity>
       ),
@@ -145,7 +146,7 @@ const Login = ({navigation}: any) => {
                 pTop={hp(2)}>
                 {t('dontAccount')}
               </FontText>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate(RouteName.registerScreen)}>
                 <FontText
                   name={'inter-regular'}
                   size={normalize(13)}
