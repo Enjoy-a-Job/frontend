@@ -1,15 +1,16 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import { defaultLang } from '@/config';
 import en from "./translation/en.json";
-import hi from "./translation/hi.json";
+import es from "./translation/es.json";
 
 i18n.use(initReactI18next).init({
   resources: {
     en: { translation: en },
-    hi: { translation: hi },
+    es: { translation: es },
   },
-  lng: "en",
-  fallbackLng: "en",
+  lng: defaultLang,
+  fallbackLng: defaultLang,
   react: {
     useSuspense: false,
   },

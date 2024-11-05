@@ -15,6 +15,7 @@ interface Props {
   name: string;
   error?: string;
   viewStyle?: Record<string, any>;
+  dataDetectorType?: 'phoneNumber' | 'email' | 'url' | 'none' | undefined,
 }
 
 const CustomInput: React.FC<Props> = (props: Props) => {
@@ -27,6 +28,7 @@ const CustomInput: React.FC<Props> = (props: Props) => {
     name,
     error,
     viewStyle = {},
+    dataDetectorType,
   } = props;
   const [focus, setFocus] = React.useState<boolean>(false);
 
@@ -66,6 +68,7 @@ const CustomInput: React.FC<Props> = (props: Props) => {
       }}
       onChangeText={handleChange(name)}
       onFocus={() => setFocus(true)}
+      dataDetectorType={dataDetectorType}
     />
     <FontText color={colors.red} size={normalize(12)} pLeft={wp(2)}>
       {error || ''}

@@ -1,5 +1,5 @@
 import { View, SafeAreaView, ScrollView } from 'react-native';
-import React, { useLayoutEffect, useState } from 'react';
+import React from 'react';
 import colors from '../../assets/colors';
 import { normalize } from '../../helper/responsiveScreen';
 import SvgIcons from '../../assets/svgIcons';
@@ -17,16 +17,16 @@ import HeaderOfList from '../../components/HeaderOfList';
 import SearchHome from '../../components/SearchHome';
 import { useTranslation } from 'react-i18next';
 
-const Home = () => {
+const Home = (): React.ReactElement => {
   const { t } = useTranslation();
-  const [popularCourses, setPopularCourses] = useState<any>([]);
-  const [treadingCourses, setTreadingCourses] = useState<any>([]);
-  const [updateState, setUpdateState] = useState<boolean>(false);
+  const [popularCourses, setPopularCourses] = React.useState<any>([]);
+  const [treadingCourses, setTreadingCourses] = React.useState<any>([]);
+  const [updateState, setUpdateState] = React.useState<boolean>(false);
   const categoriesData = CATEGORIES_DATA();
   const popularCoursesData = POPULAR_COURSES_DATA();
   const trendingCoursesData = TREADING_COURSES_DATA();
 
-  useLayoutEffect(() => {
+  React.useLayoutEffect(() => {
     setPopularCourses(popularCoursesData);
     setTreadingCourses(trendingCoursesData);
   }, []);

@@ -22,6 +22,7 @@ const FontText = ({
   textDecoration = null,
   onLayout,
   ellipsizeMode,
+  dataDetectorType = 'all',
 }: any) => {
   const fontSize = size;
   const fontName : any = fonts;
@@ -47,7 +48,8 @@ const FontText = ({
       numberOfLines={lines}
       onLayout={onLayout}
       ellipsizeMode={ellipsizeMode}
-      style={[textStyle, style]}>
+      style={[textStyle, style]}
+      dataDetectorType={dataDetectorType}>
       {children}
     </Text>
   );

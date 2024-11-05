@@ -17,12 +17,71 @@ import CustomInput from '@/app/components/Input/CustomInput';
 import CustomPassword from '@/app/components/Input/CustomPassword';
 import SvgIcons from '@/app/assets/svgIcons';
 import { RouteName } from '@/app/helper/routeName';
+import { RegisterBody, register } from '@/api/authentication';
 
 import s from './style';
 import { useTranslation } from 'react-i18next';
+import { useMutation } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
+
+interface FormikValues extends RegisterBody {
+  're-password': string;
+};
 
 const Register = ({navigation}: any) => {
   const { t } = useTranslation();
+  const [errors, setErrors] = React.useState<Record<string, string[]> | null>(null);
+  const { mutate: doPost, status } = useMutation({
+    mutationFn: (body: RegisterBody) => register(body),
+    onSuccess: (data) => {
+      navigation.navigate(RouteName.mobileVerificationScreen, {
+        phone: '636620170',
+      });
+    },
+    onError: ({ response }: AxiosError) => {
+      if (response?.status === 400 && response?.data) {
+        setErrors(response?.data as Record<string, string[]>);
+      }
+      console.error('Registration error', response?.data);
+    },
+  });
+  const cfg = {
+    validationSchema: Yup.object().shape({
+      name: Yup.string()
+        .required(t('app.register.name.required')),
+      lastname: Yup.string()
+        .required(t('app.register.last-name.required')),
+      alias: Yup.string()
+        .required(t('app.register.alias.required')),
+      phone: Yup.string()
+        .required(t('app.register.phone.required')),
+      email: Yup.string()
+        .required(t('app.register.email.required'))
+        .email(t('app.register.email.invalid')),
+      password: Yup.string()
+        .required(t('app.register.password.required'))
+        .min(8, t('app.register.password.minLength'))
+        .matches(/[a-zA-Z]/, t('app.register.password.lettersRequired'))
+        .matches(/[0-9]/, t('app.register.password.numbersRequired')),
+      're-password': Yup.string()
+        .required(t('app.register.password.required'))
+        .oneOf([Yup.ref('password')], t('app.register.password.match')),
+    }),
+  };
+  const handlePost = (values: FormikValues) => {
+    Keyboard.dismiss();
+    // TODO: remove this redirection
+    navigation.navigate(RouteName.mobileVerificationScreen, {
+      phone: values.phone,
+    });
+    return;
+    /*
+    const { 're-password': _, ...body } = values;
+    doPost(body);
+    */
+  };
+
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: t('app.register.header'),
@@ -35,67 +94,13 @@ const Register = ({navigation}: any) => {
     });
   }, [navigation]);
 
-  const cfg = {
-    validationSchema: Yup.object().shape({
-      name: Yup.string()
-        .required(t('app.register.name.required'))
-        .email(t('app.register.name.invalid')),
-      lastname: Yup.string()
-        .required(t('app.register.last-name.required'))
-        .email(t('app.register.last-name.invalid')),
-      alias: Yup.string()
-        .required(t('app.register.alias.required'))
-        .email(t('app.register.alias.invalid')),
-      phone: Yup.string()
-        .required(t('app.register.phone.required'))
-        .email(t('app.register.phone.invalid')),
-      email: Yup.string()
-        .required(t('app.register.email.required'))
-        .email(t('app.register.email.invalid')),
-      password: Yup.string()
-        .required(t('app.register.password.required'))
-        .min(8, t('app.register.password.minLength'))
-        .matches(/[a-zA-Z]/, t('app.register.password.lettersRequired'))
-        .matches(/[0-9]/, t('app.register.password.numbersRequired')),
-      're-password': Yup.string()
-        .required(t('app.register.password.required'))
-        .oneOf([Yup.ref('password1')], t('app.register.password.match')),
-    }),
-  }
-
-  const InputText = (
-    { handleChange, handleBlur, name, values, errors, marginTop = -2 } : {
-      handleChange: {
-        (e: React.ChangeEvent<any>): void;
-        <T = string | React.ChangeEvent<any>>(field: T): T extends React.ChangeEvent<any> ? void : (e: string | React.ChangeEvent<any>) => void;
-      }
-      handleBlur: {
-        (e: React.FocusEvent<any>): void;
-        <T = any>(fieldOrEvent: T): T extends string ? (e: any) => void : void;
-    }
-      name: string,
-      values: Record<string, any>,
-      errors: Record<string, any>,
-      marginTop?: number
-    }) => (
-    <CustomInput
-      title={t(`app.register.${name}.title`)}
-      placeHolder={t(`app.register.${name}.placeholder`)}
-      name={name}
-      handleChange={handleChange}
-      handleBlur={handleBlur}
-      value={values[name]}
-      error={errors[name]}
-      viewStyle={{ marginTop: hp(marginTop) }}
-    />
-  )
-
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" keyboardVerticalOffset={80}>
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ flexGrow: 1 }}
+          keyboardShouldPersistTaps="handled"
         >
           <View style={s.container}>
             <View style={s.welcomeContainer}>
@@ -119,40 +124,68 @@ const Register = ({navigation}: any) => {
                   {t('app.register.description')}
                 </FontText>
               </View>
-  
               {/* Formik Form */}
-              <Formik
+              <Formik<FormikValues>
                 initialValues={{
-                  name: '',
-                  lastname: '',
-                  alias: '',
-                  phone: '',
-                  email: '',
-                  password: '',
-                  're-password': '',
+                  name: 'Francisco Javier',
+                  lastname: 'Sánchez-Ostiz Erviti',
+                  alias: 'spielberg',
+                  phone: '636620170',
+                  email: 'javier.sanchezostiz@gmail.com',
+                  password: '$Tf29Sa#',
+                  're-password': '$Tf29Sa#',
                 }}
                 validationSchema={cfg.validationSchema}
-                onSubmit={(values) => {
-                  console.log(values);
-                  navigation.replace(RouteName.bottomTab);
-                }}
+                onSubmit={handlePost}
               >
                 {(params) => (
                   <>
-                    <InputText {...params} name="name" marginTop={2} />
-                    <InputText {...params} name="lastname" />
-                    <InputText {...params} name="alias" />
-                    <InputText {...params} name="phone" />
-                    <CustomInput
-                      title={t('app.register.email.title')}
-                      placeHolder={t('app.register.email.placeholder')}
-                      name="email"
-                      handleChange={params.handleChange}
-                      handleBlur={params.handleBlur}
-                      value={params.values.email}
-                      error={params.errors.email}
-                      viewStyle={{ marginTop: hp(-2) }}
-                    />
+                  {[
+                    {
+                      name: 'name',
+                      marginTop: 2,
+                    },
+                    {
+                      name: 'lastname',
+                    },
+                    {
+                      name: 'alias',
+                    },
+                    {
+                      name: 'phone',
+                      dataDetectorType: 'phoneNumber' as 'phoneNumber',
+                    },
+                    {
+                      name: 'email',
+                    }
+                  ].map((input) => {
+                    const { marginTop = -2, name, ...rest } = input;
+                    const key = name as keyof typeof params.values;
+                    const error = (() => {
+                      if (errors && errors[key]) {
+                        return errors[key].join(', ');
+                      }
+                      if (params.touched[key]) {
+                        return params.errors[key];
+                      }
+                      return '';
+                    })();
+
+                    return (
+                      <React.Fragment key={key}>
+                        <CustomInput
+                          title={t(`app.register.${key}.title`)}
+                          placeHolder={t(`app.register.${key}.placeholder`)}
+                          name={key}
+                          handleChange={params.handleChange}
+                          handleBlur={params.handleBlur}
+                          value={params.values[key]}
+                          error={error}
+                          viewStyle={{ marginTop: hp(marginTop) }}
+                          {...rest}
+                        />
+                      </React.Fragment>
+                    )})}
                     <CustomPassword
                       title={t('app.register.password.title')}
                       placeHolder={t('app.register.password.placeholder')}
@@ -160,7 +193,7 @@ const Register = ({navigation}: any) => {
                       handleChange={params.handleChange}
                       handleBlur={params.handleBlur}
                       value={params.values.password}
-                      error={params.errors.password}
+                      error={params.touched.password ? params.errors.password : ''}
                       viewStyle={{ marginTop: hp(-2) }}
                     />
                     <CustomPassword
@@ -170,7 +203,7 @@ const Register = ({navigation}: any) => {
                       handleChange={params.handleChange}
                       handleBlur={params.handleBlur}
                       value={params.values['re-password']}
-                      error={params.errors['re-password']}
+                      error={params.touched['re-password'] ? params.errors['re-password'] : ''}
                       viewStyle={{ marginTop: hp(-2) }}
                     />
                     <Button
@@ -184,7 +217,7 @@ const Register = ({navigation}: any) => {
                         size={normalize(16)}
                         color={colors.white}
                       >
-                        {t('logIn')}
+                        {t('app.register')}
                       </FontText>
                     </Button>
                   </>
@@ -203,6 +236,7 @@ const Register = ({navigation}: any) => {
                 <TouchableOpacity
                   style={{ marginLeft: hp(0.25) }}
                   onPress={() => navigation.navigate(RouteName.logInScreen)}
+                  disabled={status !== 'idle'}
                 >
                   <FontText
                     name={'inter-regular'}

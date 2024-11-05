@@ -13,8 +13,8 @@ export default StyleSheet.create({
     backgroundColor: colors.white,
     borderTopLeftRadius: hp(4),
     borderTopRightRadius: hp(4),
-    marginTop: hp(3),
-    paddingHorizontal: wp(5.5),
+    marginTop: hp(1),
+    paddingHorizontal: wp(1.5),
   },
   welcomeHeader: {
     alignItems: 'center',
@@ -57,11 +57,12 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: hp(4),
   },
   dividerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: hp(6),
+    marginTop: hp(0),
   },
   dividerLine: {
     flex: 1,
