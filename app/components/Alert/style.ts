@@ -1,28 +1,17 @@
 import { StyleSheet } from 'react-native';
 
-import colors from '@/app/assets/colors';
-import { hp, wp } from '@/app/helper/responsiveScreen';
-
 export default StyleSheet.create({
-  notification: {
-    borderRadius: hp(1),
-    padding: wp(2),
-    marginBottom: hp(1),
-  },
   primary: {
-    backgroundColor: '#00d1b2',
-    color: colors.white,
+    backgroundColor: '',
+    color: '#00d1b2',
   },
   danger: {
-    backgroundColor: '#f14668',
-    color: colors.white,
+    color: '#f14668',
   },
   warning: {
-    backgroundColor: '#ffe08a',
-    color: '#000000B3',
+    color: '#ffe08a',
   },
   success: {
-    backgroundColor: '#48c78e',
-    color: colors.white,
+    color: '#48c78e',
   }
 });

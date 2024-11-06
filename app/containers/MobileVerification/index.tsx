@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -7,29 +7,72 @@ import {
   KeyboardAvoidingView,
   Keyboard,
   TouchableWithoutFeedback,
-  StyleSheet,
 } from 'react-native';
+import { AxiosError } from 'axios';
 
-import style from './style';
+import { useTranslation } from 'react-i18next';
+import { hp, normalize, wp } from '@/app/helper/responsiveScreen';
+import colors from '@/app/assets/colors';
+import { Button, FontText } from '@/app/components';
+import { resendText, validateTwilioCode } from '@/api/authentication';
+import { RouteName } from '@/app/helper/routeName';
+import { useMutation } from '@tanstack/react-query';
+import Alert, { AlertTypes } from '@/app/components/Alert';
+
+import styles from './style';
 
 const cfg = {
   timer: 60 * 5,
 };
 
-const OtpVerification = ({ navigation }): React.ReactElement => {
-  const [otp, setOtp] = useState(new Array(6).fill(''));
-  const [timer, setTimer] = useState<number>(cfg.timer); // 60 seconds timer
+interface Props {
+  navigation: any;
+  route: {
+    params: {
+      phone: string;
+    };
+  };
+}
+
+const OtpVerification = ({ route, navigation }: Props): React.ReactElement<Props> => {
+  const { phone } = route.params;
+  const [otp, setOtp] = React.useState<string[]>(new Array(6).fill(''));
+  const [alert, setAlert] = React.useState<{ type: AlertTypes, message: string } | null>(null);
+  const [timer, setTimer] = React.useState<number>(cfg.timer); // 60 seconds timer
+  const inputs = React.useRef<TextInput[]>([]);
+  const { t } = useTranslation();
+
+  const { mutate: requestSMS, status: requestSMSStatus } = useMutation({
+    mutationFn: () => resendText({ phone }),
+    onSuccess: (data) => {
+      setAlert({ type: 'success', message: data.message });
+    },
+    onError: ({ response }: AxiosError) => {
+      setAlert({ type: 'danger', message: t(`app.mobile-verification.error-sending-sms.status-${response?.status}`) });
+    },
+  });
+  const { mutate: requestValidateCode, status: requestValidateCodeStatus } = useMutation({
+    mutationFn: ({ code }: { code: string }) => validateTwilioCode({ phone, code }),
+    onSuccess: () => {
+      setAlert({ type: 'success', message: t('app.mobile-verification.success') });
+      setTimeout(() => {
+        navigation.navigate(RouteName.logInScreen);
+      }, 6 * 1000);
+    },
+    onError: ({ response }: AxiosError) => {
+      setAlert({ type: 'danger', message: t(`app.mobile-verification.error-validating-code.status-${response?.status}`) });
+    },
+  });
 
   // Handle OTP input
-  const handleOtpChange = (value, index) => {
+  const handleOtpChange = (value: string, index: number) => {
     const otpArray = [...otp];
     otpArray[index] = value;
     setOtp(otpArray);
 
     // Automatically focus the next input
-    if (value && index < 5) {
-      const nextInput = `otpInput${index + 1}`;
-      this[nextInput].focus();
+    if (value && inputs.current[index + 1]) {
+      inputs.current[index + 1]?.focus();
     }
   };
 
@@ -37,13 +80,12 @@ const OtpVerification = ({ navigation }): React.ReactElement => {
   const resendCode = () => {
     // Logic to resend the OTP
     setTimer(60); // Reset timer
+    requestSMS();
   };
 
-  // Verify OTP
   const verifyOtp = () => {
     const otpValue = otp.join('');
-    console.log('OTP Entered: ', otpValue);
-    // Add logic to verify the OTP
+    requestValidateCode({ code: otpValue });
   };
 
   React.useEffect(() => {
@@ -67,19 +109,26 @@ const OtpVerification = ({ navigation }): React.ReactElement => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <KeyboardAvoidingView style={styles.container} behavior="padding">
-        <View style={styles.header}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text style={styles.backIcon}>←</Text>
-          </TouchableOpacity>
-          <Text style={styles.headerText}>OTP</Text>
-        </View>
 
         <View style={styles.content}>
-          <Text style={styles.verificationText}>Verification</Text>
-          <Text style={styles.description}>
-            6-digits pin has been sent to your email address, riedad2562@gmail.com
-          </Text>
-
+          <FontText
+            name={'inter-semibold'}
+            size={normalize(24)}
+            color={colors.black}
+            style={styles.headerText}
+            pTop={hp(4)}
+          >
+            {t('app.mobile-verification.title')}
+          </FontText>
+          <FontText
+            name={'inter-regular'}
+            size={normalize(16)}
+            color={colors.gray}
+            style={styles.headerText}
+            pTop={hp(2)}
+          >
+            {t('app.mobile-verification.description')}
+          </FontText>
           <View style={styles.otpContainer}>
             {otp.map((digit, index) => (
               <TextInput
@@ -89,28 +138,56 @@ const OtpVerification = ({ navigation }): React.ReactElement => {
                 keyboardType="numeric"
                 maxLength={1}
                 style={styles.otpInput}
-                ref={(ref) => (this[`otpInput${index}`] = ref)}
+                ref={(ref) => {
+                  if (!ref) return;
+                  inputs.current[index] = ref;
+                }}
               />
             ))}
           </View>
-
+          <FontText
+            name={'inter-regular'}
+            size={normalize(16)}
+            color={colors.gray}
+            style={styles.headerText}
+            pTop={hp(2)}
+          >
+            {phone}
+          </FontText>
           <Text style={styles.timer}>
             {minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
           </Text>
-
+          {alert && (
+            <Alert type={alert.type}>
+              {alert.message}
+            </Alert>
+          )}
           <TouchableOpacity onPress={resendCode}>
-            <Text style={styles.resendText}>Didn’t receive code? Resend Code</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.verifyButton} onPress={verifyOtp}>
-            <Text style={styles.verifyButtonText}>Verify</Text>
+            <Text style={styles.resendText}>
+              {t('app.mobile-verification.re-send')}
+            </Text>
+          </TouchableOpacity>        
+          <TouchableOpacity>
+            <Button
+              onPress={verifyOtp}
+              bgColor={colors.primary}
+              style={styles.btn}
+              buttonHeight={wp(14)}
+              disabled={otp.some((digit) => !digit)}
+            >
+              <FontText
+                name={'poppins-semibold'}
+                size={normalize(16)}
+                color={colors.white}
+              >
+                {t('app.mobile-verification.verify')}
+              </FontText>
+            </Button>
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );
 }
-
-const styles = StyleSheet.create(style);
 
 export default OtpVerification;

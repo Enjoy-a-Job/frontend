@@ -1,4 +1,7 @@
-export default {
+import { hp, wp } from '@/app/helper/responsiveScreen';
+import { StyleSheet } from 'react-native';
+
+export default StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
@@ -59,16 +62,9 @@ export default {
     color: '#1E90FF',
     marginTop: 8,
   },
-  verifyButton: {
-    marginTop: 24,
-    backgroundColor: '#1E90FF',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 5,
+  btn: {
+    width: wp(90),
+    marginTop: hp(6),
+    borderRadius: hp(5),
   },
-  verifyButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-};
+});

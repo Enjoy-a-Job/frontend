@@ -27,13 +27,14 @@ const Button = (props: any) => {
   return (
     <TouchableOpacity
       activeOpacity={activeOpacity}
-      onPress={onButtonPress(props)}
+      onPress={disabled ? undefined : onButtonPress(props)}
       disabled={disabled}
       style={[
         styles.button,
         buttonStyle,
         bgColor ? {backgroundColor: bgColor} : null,
         buttonHeight ? {height: buttonHeight} : null,
+        disabled ? {opacity: 0.5} : null,
         style,
       ]}>
       {children}

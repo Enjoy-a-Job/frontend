@@ -35,7 +35,7 @@ const Register = ({navigation}: any) => {
     mutationFn: (body: RegisterBody) => register(body),
     onSuccess: (data) => {
       navigation.navigate(RouteName.mobileVerificationScreen, {
-        phone: '636620170',
+        phone: data.user.phone,
       });
     },
     onError: ({ response }: AxiosError) => {
@@ -70,15 +70,8 @@ const Register = ({navigation}: any) => {
   };
   const handlePost = (values: FormikValues) => {
     Keyboard.dismiss();
-    // TODO: remove this redirection
-    navigation.navigate(RouteName.mobileVerificationScreen, {
-      phone: values.phone,
-    });
-    return;
-    /*
     const { 're-password': _, ...body } = values;
     doPost(body);
-    */
   };
 
 
