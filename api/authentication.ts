@@ -39,3 +39,8 @@ export const validateTwilioCode = async (body: { phone: string, code: string }) 
   }>(`${apiBaseUrl}/validate-code`, body);
   return data;
 }
+
+export const login = async (body: { email: string, password: string }) => {
+  const { data } = await axios.post<any>(`${apiBaseUrl}/login`, body);
+  return data;
+}

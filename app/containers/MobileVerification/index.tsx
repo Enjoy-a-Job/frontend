@@ -17,7 +17,8 @@ import { Button, FontText } from '@/app/components';
 import { resendText, validateTwilioCode } from '@/api/authentication';
 import { RouteName } from '@/app/helper/routeName';
 import { useMutation } from '@tanstack/react-query';
-import Alert, { AlertTypes } from '@/app/components/Alert';
+import Alert from '@/app/components/Alert';
+import { useDisplayAlert } from '@/app/contexts/DisplayAlert';
 
 import styles from './style';
 
@@ -37,30 +38,30 @@ interface Props {
 const OtpVerification = ({ route, navigation }: Props): React.ReactElement<Props> => {
   const { phone } = route.params;
   const [otp, setOtp] = React.useState<string[]>(new Array(6).fill(''));
-  const [alert, setAlert] = React.useState<{ type: AlertTypes, message: string } | null>(null);
   const [timer, setTimer] = React.useState<number>(cfg.timer); // 60 seconds timer
   const inputs = React.useRef<TextInput[]>([]);
   const { t } = useTranslation();
+  const { displayAlert } = useDisplayAlert();
 
   const { mutate: requestSMS, status: requestSMSStatus } = useMutation({
     mutationFn: () => resendText({ phone }),
     onSuccess: (data) => {
-      setAlert({ type: 'success', message: data.message });
+      displayAlert({ type: 'success', message: data.message });
     },
     onError: ({ response }: AxiosError) => {
-      setAlert({ type: 'danger', message: t(`app.mobile-verification.error-sending-sms.status-${response?.status}`) });
+      displayAlert({ type: 'danger', message: t(`app.mobile-verification.error-sending-sms.status-${response?.status}`) });
     },
   });
   const { mutate: requestValidateCode, status: requestValidateCodeStatus } = useMutation({
     mutationFn: ({ code }: { code: string }) => validateTwilioCode({ phone, code }),
     onSuccess: () => {
-      setAlert({ type: 'success', message: t('app.mobile-verification.success') });
+      displayAlert({ type: 'success', message: t('app.mobile-verification.success') });
       setTimeout(() => {
         navigation.navigate(RouteName.logInScreen);
       }, 6 * 1000);
     },
     onError: ({ response }: AxiosError) => {
-      setAlert({ type: 'danger', message: t(`app.mobile-verification.error-validating-code.status-${response?.status}`) });
+      displayAlert({ type: 'danger', message: t(`app.mobile-verification.error-validating-code.status-${response?.status}`) });
     },
   });
 
@@ -157,11 +158,7 @@ const OtpVerification = ({ route, navigation }: Props): React.ReactElement<Props
           <Text style={styles.timer}>
             {minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
           </Text>
-          {alert && (
-            <Alert type={alert.type}>
-              {alert.message}
-            </Alert>
-          )}
+          <Alert />
           <TouchableOpacity onPress={resendCode}>
             <Text style={styles.resendText}>
               {t('app.mobile-verification.re-send')}

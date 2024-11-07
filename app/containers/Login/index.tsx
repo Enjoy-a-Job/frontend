@@ -19,10 +19,29 @@ import { RouteName } from '@/app/helper/routeName';
 
 import s from './style';
 import { useTranslation } from 'react-i18next';
-import { Link } from '@react-navigation/native';
+import { login } from '@/api/authentication';
+import { useMutation } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
+import Alert from '@/app/components/Alert';
+import { useDisplayAlert } from '@/app/contexts/DisplayAlert';
+
+interface FormikValues {
+  email: string;
+  password: string;
+  rememberMe: boolean;
+}
 
 const Login = ({navigation}: any) => {
   const { t } = useTranslation();
+  const { displayAlert } = useDisplayAlert();
+  const cfg = {
+    validationSchema: Yup.object().shape({
+      email: Yup.string().email(t('invalidEmail')).required(t('emailRequired')),
+      password: Yup.string().required(t('passwordRequired')),
+      rememberMe: Yup.boolean(),
+    }),
+  };
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: t('logIn'),
@@ -35,13 +54,15 @@ const Login = ({navigation}: any) => {
     });
   }, [navigation]);
 
-  const cfg = {
-    validationSchema: Yup.object().shape({
-      email: Yup.string().email(t('invalidEmail')).required(t('emailRequired')),
-      password: Yup.string().required(t('passwordRequired')),
-      rememberMe: Yup.boolean(),
-    }),
-  }
+  const { mutate: doRequest, status } = useMutation({
+    mutationFn: (body: FormikValues) => login(body),
+    onSuccess: (data) => {
+      navigation.replace(RouteName.bottomTab);
+    },
+    onError: ({ response }: AxiosError) => {
+      displayAlert({ type: 'danger', message:  t(`app.login.do-request.status-${response?.status}`) });
+    },
+  });
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -66,17 +87,14 @@ const Login = ({navigation}: any) => {
                 {t('welcomeDescription')}
               </FontText>
             </View>
-            <Formik
+            <Formik<FormikValues>
               initialValues={{
                 email: 'test@mail.com',
                 password: '123456',
                 rememberMe: false,
               }}
               validationSchema={cfg.validationSchema}
-              onSubmit={(values) => {
-                console.log(values);
-                navigation.replace(RouteName.bottomTab);
-              }}
+              onSubmit={(values) => doRequest(values)}
             >
               {({ handleChange, handleBlur, handleSubmit, setFieldValue, values, errors }) => (
                 <React.Fragment>
@@ -138,6 +156,7 @@ const Login = ({navigation}: any) => {
                   </React.Fragment>
               )}
             </Formik>
+            <Alert />
             <View style={s.accountView}>
               <FontText
                 name={'inter-regular'}
@@ -146,7 +165,10 @@ const Login = ({navigation}: any) => {
                 pTop={hp(2)}>
                 {t('dontAccount')}
               </FontText>
-              <TouchableOpacity onPress={() => navigation.navigate(RouteName.registerScreen)}>
+              <TouchableOpacity
+                disabled={status !== 'idle'}
+                onPress={() => navigation.navigate(RouteName.registerScreen)}
+                >
                 <FontText
                   name={'inter-regular'}
                   size={normalize(13)}

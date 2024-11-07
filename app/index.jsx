@@ -6,7 +6,8 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import useFonts from './assets/fonts.ts';
-import Stacknavigation from './navigation/Stacknavigation.tsx';
+import Stacknavigation from '../app/navigation/Stacknavigation';
+import { DisplayAlertProvider } from '../app/contexts/DisplayAlert';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -44,9 +45,11 @@ const App = function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <View style={styles.container}>
-        <Stacknavigation />
-      </View>
+      <DisplayAlertProvider>
+        <View style={styles.container}>
+          <Stacknavigation />
+        </View>
+      </DisplayAlertProvider>
     </QueryClientProvider>
   );
 };
