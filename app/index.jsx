@@ -5,9 +5,11 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
-import useFonts from './assets/fonts.ts';
-import Stacknavigation from '../app/navigation/Stacknavigation';
-import { DisplayAlertProvider } from '../app/contexts/DisplayAlert';
+
+import useFonts from '@/app/assets/fonts';
+import Stacknavigation from '@/app/navigation/Stacknavigation';
+import { DisplayAlertProvider } from '@/app/contexts/DisplayAlert';
+import { AuthProvider } from '@/app/contexts/Auth';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -45,11 +47,13 @@ const App = function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <DisplayAlertProvider>
-        <View style={styles.container}>
-          <Stacknavigation />
-        </View>
-      </DisplayAlertProvider>
+      <AuthProvider>
+        <DisplayAlertProvider>
+          <View style={styles.container}>
+            <Stacknavigation />
+          </View>
+        </DisplayAlertProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 };

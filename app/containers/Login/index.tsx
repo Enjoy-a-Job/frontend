@@ -24,6 +24,7 @@ import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import Alert from '@/app/components/Alert';
 import { useDisplayAlert } from '@/app/contexts/DisplayAlert';
+import { useAuth } from '@/app/contexts/Auth';
 
 interface FormikValues {
   email: string;
@@ -34,6 +35,7 @@ interface FormikValues {
 const Login = ({navigation}: any) => {
   const { t } = useTranslation();
   const { displayAlert } = useDisplayAlert();
+  const { login: saveToken, token } = useAuth();
   const cfg = {
     validationSchema: Yup.object().shape({
       email: Yup.string().email(t('invalidEmail')).required(t('emailRequired')),
@@ -57,12 +59,15 @@ const Login = ({navigation}: any) => {
   const { mutate: doRequest, status } = useMutation({
     mutationFn: (body: FormikValues) => login(body),
     onSuccess: (data) => {
+      saveToken(data.token);
       navigation.replace(RouteName.bottomTab);
     },
     onError: ({ response }: AxiosError) => {
       displayAlert({ type: 'danger', message:  t(`app.login.do-request.status-${response?.status}`) });
     },
   });
+
+  console.log('token', token);
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
