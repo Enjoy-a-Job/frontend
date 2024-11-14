@@ -16,6 +16,7 @@ import {
 import HeaderOfList from '../../components/HeaderOfList';
 import SearchHome from '../../components/SearchHome';
 import { useTranslation } from 'react-i18next';
+import Location from 'app/containers/Home/Location';
 
 const Home = (): React.ReactElement => {
   const { t } = useTranslation();
@@ -83,17 +84,7 @@ const Home = (): React.ReactElement => {
             }}
           />
         </View>
-        <View style={styles.locationContainer}>
-          <SvgIcons.Location />
-          <FontText
-            name={'inter-semibold'}
-            size={normalize(16)}
-            style={styles.loactionText}
-            color={colors.black}>
-            {t('locationHome')}
-          </FontText>
-          <SvgIcons.Map />
-        </View>
+        <Location />
       </ScrollView>
     </SafeAreaView>
   );

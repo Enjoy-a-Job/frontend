@@ -67,7 +67,11 @@ const Login = ({navigation}: any) => {
     },
   });
 
-  console.log('token', token);
+  React.useEffect(() => {
+    if (token) {
+      navigation.replace(RouteName.bottomTab);
+    }
+  }, [token]);
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -94,8 +98,8 @@ const Login = ({navigation}: any) => {
             </View>
             <Formik<FormikValues>
               initialValues={{
-                email: 'test@mail.com',
-                password: '123456',
+                email: 'javier.sanchezostiz@gmail.com',
+                password: '$Tf29Sa#',
                 rememberMe: false,
               }}
               validationSchema={cfg.validationSchema}
