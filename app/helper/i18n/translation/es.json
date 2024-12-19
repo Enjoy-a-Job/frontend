@@ -40,5 +40,17 @@
   "price": "Price",
 
   "TODO: remove all the above translations and add your own translations": "",
-  "app.register.title": "Register"
+  "app.register.title": "Register",
+
+  "profile.Title": "Pablo “el guapo”",
+  "profile.Email": "elguapofas @gmail.com",
+  "profile.CompletedWork": "Trabajos Realizados",
+  "profile.ContractedWork": "Trabajos Contratados",
+  "profile.EditProfile": "Editar Perfil",
+  "profile.Notifications": "Notificaciones",
+  "profile.Purse": "Monedero",
+  "profile.Locations": "Ubicaciones",
+  "profile.PrivacyPolicy": "Política de Privacidad",
+  "profile.WhoWeAre": "Quienes somos",
+  "profile.Logout": "Logout"
 }

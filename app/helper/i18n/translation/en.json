@@ -40,5 +40,17 @@
   "price": "Price",
 
   "TODO: remove all the above translations and add your own translations": "",
-  "app.register.title": "Register"
+  "app.register.title": "Register",
+
+  "profile.Title": "Pablo “the handsome”",
+  "profile.Email": "elguapofas @gmail.com",
+  "profile.CompletedWork": "Completed Works",
+  "profile.ContractedWork": "Contracted Work",
+  "profile.EditProfile": "Edit Profile",
+  "profile.Notifications": "Notifications",
+  "profile.Purse": "Purse",
+  "profile.Locations": "Locations",
+  "profile.PrivacyPolicy": "Privacy Policy",
+  "profile.WhoWeAre": "Who we are",
+  "profile.Logout": "Logout"
 }
