@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, ActivityIndicator, StatusBar } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import {
   QueryClient,
@@ -10,6 +10,7 @@ import useFonts from '@/app/assets/fonts';
 import Stacknavigation from '@/app/navigation/Stacknavigation';
 import { DisplayAlertProvider } from '@/app/contexts/DisplayAlert';
 import { AuthProvider } from '@/app/contexts/Auth';
+import colors from "./assets/colors";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -50,6 +51,10 @@ const App = function App() {
       <AuthProvider>
         <DisplayAlertProvider>
           <View style={styles.container}>
+            <StatusBar
+              barStyle={"dark-content"}
+              backgroundColor={colors.background}
+            />
             <Stacknavigation />
           </View>
         </DisplayAlertProvider>

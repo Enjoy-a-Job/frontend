@@ -25,6 +25,18 @@ import Logo from './svgs/logo.svg';
 import Home from './svgs/home.svg';
 import Sms from './svgs/sms.svg';
 import Profile from './svgs/profile.svg';
+import ProfileIcon from "./svgs/ProfileIcon.svg";
+import Camera from "./svgs/Camera.svg";
+import ProfileCompletedWork from './svgs/ProfileCompletedWork.svg'
+import ProfileContractedWork from './svgs/ProfileContractedWork.svg'
+import ProfileEditProfile from './svgs/ProfileEditProfile.svg'
+import ProfileLocations from './svgs/ProfileLocations.svg'
+import ProfileLogout from './svgs/ProfileLogout.svg'
+import ProfileNotifications from './svgs/ProfileNotifications.svg'
+import ProfilePrivacyPolicy from './svgs/ProfilePrivacyPolicy.svg'
+import ProfilePurse from './svgs/ProfilePurse.svg'
+import ProfileWhoWeAre from './svgs/ProfileWhoWeAre.svg'
+import LeftIcon from './svgs/LeftIcon.svg'
 
 const icons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } = {
   ShowIcon,
@@ -54,6 +66,18 @@ const icons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } = {
   Home,
   Sms,
   Profile,
+  ProfileIcon,
+  Camera,
+  ProfileCompletedWork,
+  ProfileContractedWork,
+  ProfileEditProfile,
+  ProfileLocations,
+  ProfileLogout,
+  ProfileNotifications,
+  ProfilePrivacyPolicy,
+  ProfilePurse,
+  ProfileWhoWeAre,
+  LeftIcon
 };
 
 export default icons;
