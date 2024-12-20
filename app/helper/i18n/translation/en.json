@@ -51,5 +51,20 @@
   "profile.Locations": "Locations",
   "profile.PrivacyPolicy": "Privacy Policy",
   "profile.WhoWeAre": "Who we are",
-  "profile.Logout": "Logout"
+  "profile.Logout": "Logout",
+
+  "category.Title": "Categories",
+  "category.Handyman": "Handyman",
+  "category.Care": "Care",
+  "category.Beauty": "Beauty",
+  "category.Sports": "Sports",
+  "category.TouristGuide": "Tourist Guide",
+  "category.Pets": "Pets",
+  "category.ClothingFootwear": "Clothing Footwear",
+  "category.Classes": "Classes",
+  "category.Mechanics": "Mechanics",
+  "category.Transportation": "Transportation",
+  "category.Audiovisual": "Audiovisual",
+  "category.Adviser": "Adviser",
+  "category.Home": "Home"
 }

@@ -104,3 +104,61 @@ export const PROFILE_MENU_DATA = () => {
     },
   ];
 };
+
+export const ALL_CATEGORIES_DATA = () => {
+  const { t } = useTranslation();
+  return [
+    {
+      title: t('category.Handyman'),
+      icon: SvgIcons.CategoryHandyman
+    },
+    {
+      title: t('category.Care'),
+      icon: SvgIcons.CategoryCare
+    },
+    {
+      title: t('category.Beauty'),
+      icon: SvgIcons.CategoryBeautyBeauty
+    },
+    {
+      title: t('category.ClothingFootwear'),
+      icon: SvgIcons.CategoryClothingFootwear
+    },
+    {
+      title: t('category.Sports'),
+      icon: SvgIcons.CategorySports
+    },
+    {
+      title: t('category.Classes'),
+      icon: SvgIcons.CategoryClasses
+    },
+    {
+      title: t('category.Pets'),
+      icon: SvgIcons.CategoryPets
+    },
+    {
+      title: t('category.Mechanics'),
+      icon: SvgIcons.CategoryMechanics
+    },
+    {
+      title: t('category.Transportation'),
+      icon: SvgIcons.CategoryTransportation
+    },
+    {
+      title: t('category.Audiovisual'),
+      icon: SvgIcons.CategoryAudiovisual
+    },
+    {
+      title: t('category.TouristGuide'),
+      icon: SvgIcons.CategoryTourGuide
+    },
+    {
+      title: t('category.Adviser'),
+      icon: SvgIcons.CategoryConsulting
+    },
+    {
+      title: t('category.Home'),
+      icon: SvgIcons.CategoryHome
+    },
+  ];
+};

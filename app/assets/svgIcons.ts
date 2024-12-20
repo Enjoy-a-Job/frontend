@@ -37,6 +37,19 @@ import ProfilePrivacyPolicy from './svgs/ProfilePrivacyPolicy.svg'
 import ProfilePurse from './svgs/ProfilePurse.svg'
 import ProfileWhoWeAre from './svgs/ProfileWhoWeAre.svg'
 import LeftIcon from './svgs/LeftIcon.svg'
+import CategoryHandyman from './svgs/CategoryHandyman.svg'
+import CategoryAudiovisual from './svgs/CategoryAudiovisual.svg'
+import CategoryBeautyBeauty from './svgs/CategoryBeautyBeauty.svg'
+import CategoryCare from './svgs/CategoryCare.svg'
+import CategoryClasses from './svgs/CategoryClasses.svg'
+import CategoryClothingFootwear from './svgs/CategoryClothingFootwear.svg'
+import CategoryConsulting from './svgs/CategoryConsulting.svg'
+import CategoryHome from './svgs/CategoryHome.svg'
+import CategoryMechanics from './svgs/CategoryMechanics.svg'
+import CategoryPets from './svgs/CategoryPets.svg'
+import CategorySports from './svgs/CategorySports.svg'
+import CategoryTourGuide from './svgs/CategoryTourGuide.svg'
+import CategoryTransportation from './svgs/CategoryTransportation.svg'
 
 const icons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } = {
   ShowIcon,
@@ -77,7 +90,20 @@ const icons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } = {
   ProfilePrivacyPolicy,
   ProfilePurse,
   ProfileWhoWeAre,
-  LeftIcon
+  LeftIcon,
+  CategoryHandyman,
+  CategoryAudiovisual,
+  CategoryBeautyBeauty,
+  CategoryCare,
+  CategoryClasses,
+  CategoryClothingFootwear,
+  CategoryConsulting,
+  CategoryHome,
+  CategoryMechanics,
+  CategoryPets,
+  CategorySports,
+  CategoryTourGuide,
+  CategoryTransportation
 };
 
 export default icons;

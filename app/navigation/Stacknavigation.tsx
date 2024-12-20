@@ -8,6 +8,7 @@ import Welcome from '@/app/containers/Welcome';
 import colors from '@/app/assets/colors';
 import MobileVerification from '@/app/containers/MobileVerification';
 import { BottomTabNavigation } from './BottomTab/BottomTabNavigation';
+import Categories from '@/app/containers/Categories';
 
 const options = {
   headerShown: true,
@@ -27,12 +28,37 @@ export default function Stacknavigation() {
     <NavigationContainer independent={true}>
       <Stack.Navigator
         initialRouteName={RouteName.welcomeScreen}
-        screenOptions={{ headerShown: false, headerBackTitleVisible: false }}>
-        <Stack.Screen name={RouteName.welcomeScreen} component={Welcome} options={{ ...options, headerTitle: '' }} />
-        <Stack.Screen name={RouteName.logInScreen} component={Login} options={options} />
-        <Stack.Screen name={RouteName.registerScreen} component={Register} options={options} />
-        <Stack.Screen name={RouteName.mobileVerificationScreen} component={MobileVerification} options={options} />
-        <Stack.Screen name={RouteName.bottomTab} component={BottomTabNavigation} />
+        screenOptions={{ headerShown: false, headerBackTitleVisible: false }}
+      >
+        <Stack.Screen
+          name={RouteName.welcomeScreen}
+          component={Welcome}
+          options={{ ...options, headerTitle: '' }}
+        />
+        <Stack.Screen
+          name={RouteName.logInScreen}
+          component={Login}
+          options={options}
+        />
+        <Stack.Screen
+          name={RouteName.registerScreen}
+          component={Register}
+          options={options}
+        />
+        <Stack.Screen
+          name={RouteName.mobileVerificationScreen}
+          component={MobileVerification}
+          options={options}
+        />
+        <Stack.Screen
+          name={RouteName.categoriesScreen}
+          component={Categories}
+          options={options}
+        />
+        <Stack.Screen
+          name={RouteName.bottomTab}
+          component={BottomTabNavigation}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
