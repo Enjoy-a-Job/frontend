@@ -61,3 +61,46 @@ export const TREADING_COURSES_DATA = () => {
     },
   ];
 };
+
+
+export const PROFILE_MENU_DATA = () => {
+  const { t } = useTranslation();
+  return [
+    {
+      title: t('profile.CompletedWork'),
+      icon: SvgIcons.ProfileCompletedWork,
+    },
+    {
+      title: t('profile.ContractedWork'),
+      icon: SvgIcons.ProfileContractedWork,
+    },
+    {
+      title: t('profile.EditProfile'),
+      icon: SvgIcons.ProfileEditProfile,
+    },
+    {
+      title: t('profile.Notifications'),
+      icon: SvgIcons.ProfileNotifications,
+    },
+    {
+      title: t('profile.Purse'),
+      icon: SvgIcons.ProfilePurse,
+    },
+    {
+      title: t('profile.Locations'),
+      icon: SvgIcons.ProfileLocations,
+    },
+    {
+      title: t('profile.PrivacyPolicy'),
+      icon: SvgIcons.ProfilePrivacyPolicy,
+    },
+    {
+      title: t('profile.WhoWeAre'),
+      icon: SvgIcons.ProfileWhoWeAre,
+    },
+    {
+      title: t('profile.Logout'),
+      icon: SvgIcons.ProfileLogout,
+    },
+  ];
+};
