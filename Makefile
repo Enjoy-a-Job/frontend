@@ -15,3 +15,7 @@ watch: ## Watch for changes and run lint
 upload: ## Upload project to expo
 	@echo "🚀 Uploading project to expo..."
 	@eas update --branch main
+
+publish: ## Publish project to expo
+	@echo "🚀 Publishing project to expo..."
+	@eas update

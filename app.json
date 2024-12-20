@@ -35,6 +35,21 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "eb99c3bc-668d-4e9a-ab46-08f6ae0c1347"
+      }
+    },
+    "owner": "spielberg",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/eb99c3bc-668d-4e9a-ab46-08f6ae0c1347"
     }
   }
 }
