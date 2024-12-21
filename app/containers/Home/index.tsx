@@ -17,8 +17,10 @@ import HeaderOfList from '../../components/HeaderOfList';
 import SearchHome from '../../components/SearchHome';
 import { useTranslation } from 'react-i18next';
 import Location from 'app/containers/Home/Location';
+import { RouterProps } from "@/app/utils/commonInterface";
+import { RouteName } from "@/app/helper/routeName";
 
-const Home = (): React.ReactElement => {
+const Home = ({ navigation }: RouterProps): React.ReactElement => {
   const { t } = useTranslation();
   const [popularCourses, setPopularCourses] = React.useState<any>([]);
   const [treadingCourses, setTreadingCourses] = React.useState<any>([]);
@@ -53,14 +55,14 @@ const Home = (): React.ReactElement => {
           <HeaderOfList
             title={t('TopCategories')}
             rightText={t('SeeAll')}
+            onPress={() => {
+              navigation.navigate(RouteName.categoriesScreen);
+            }}
           />
           <CategoriesList data={categoriesData} />
         </View>
         <View style={{ marginTop: normalize(10) }}>
-          <HeaderOfList
-            title={t('PopularCourses')}
-            rightText={t('SeeAll')}
-          />
+          <HeaderOfList title={t('PopularCourses')} rightText={t('SeeAll')} />
           <PopularCoursesList
             data={popularCourses}
             Like={(item: any) => {
@@ -71,10 +73,7 @@ const Home = (): React.ReactElement => {
           />
         </View>
         <View style={{ marginTop: normalize(10) }}>
-          <HeaderOfList
-            title={t('TreadingCourses')}
-            rightText={t('SeeAll')}
-          />
+          <HeaderOfList title={t('TreadingCourses')} rightText={t('SeeAll')} />
           <TreadingCoursesList
             data={treadingCourses}
             Like={(item: any) => {
