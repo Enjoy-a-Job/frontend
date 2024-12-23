@@ -10,6 +10,7 @@ import MobileVerification from '@/app/containers/MobileVerification';
 import { BottomTabNavigation } from './BottomTab/BottomTabNavigation';
 import Categories from '@/app/containers/Categories';
 import CategoriesMenuScreen from '@/app/containers/CategoriesMenuScreen';
+import CategoriesMenuDetailsScreen from '@/app/containers/CategoriesMenuDetailsScreen';
 
 const options = {
   headerShown: true,
@@ -63,6 +64,11 @@ export default function Stacknavigation() {
         <Stack.Screen
           name={RouteName.categoriesMenuScreen}
           component={CategoriesMenuScreen}
+          options={options}
+        />
+      <Stack.Screen
+          name={RouteName.categoriesMenuDetailsScreen}
+          component={CategoriesMenuDetailsScreen}
           options={options}
         />
       </Stack.Navigator>

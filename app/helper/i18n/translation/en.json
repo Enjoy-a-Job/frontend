@@ -78,5 +78,9 @@
   "category.menu.Mounting": "Mounting",
   "category.menu.Gardening": "Gardening",
   "category.menu.Locksmith": "Locksmith",
-  "category.menu.button.title": "You can't find what you need"
+  "category.menu.button.title": "You can't find what you need",
+
+  "category.menu.details.Professionals": "Professionals",
+  "category.menu.details.review": "Nibh nibh quis dolor in. Etiam cras nisi, turpis quisque diam",
+  "category.menu.details.PerHour": "€ per hour"
 }

@@ -50,6 +50,12 @@ import CategoryPets from './svgs/CategoryPets.svg'
 import CategorySports from './svgs/CategorySports.svg'
 import CategoryTourGuide from './svgs/CategoryTourGuide.svg'
 import CategoryTransportation from './svgs/CategoryTransportation.svg'
+import Javier from './svgs/Javier.svg'
+import Benita from './svgs/Benita.svg'
+import Ralph from './svgs/Ralph.svg'
+import CategoryMenuDetails from './svgs/CategoryMenuDetails.svg'
+import Star from './svgs/Star.svg'
+import EmptyStar from './svgs/EmptyStar.svg'
 
 const icons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } = {
   ShowIcon,
@@ -103,7 +109,13 @@ const icons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } = {
   CategoryPets,
   CategorySports,
   CategoryTourGuide,
-  CategoryTransportation
+  CategoryTransportation,
+  Javier,
+  Benita,
+  Ralph,
+  CategoryMenuDetails,
+  Star,
+  EmptyStar
 };
 
 export default icons;

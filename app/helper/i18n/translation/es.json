@@ -78,5 +78,9 @@
   "category.menu.Mounting": "Montaje",
   "category.menu.Gardening": "Jardinería",
   "category.menu.Locksmith": "Cerrajería",
-  "category.menu.button.title": "No encuentras lo que necesitas"
+  "category.menu.button.title": "No encuentras lo que necesitas",
+
+  "category.menu.details.Professionals": "Profesionales",
+  "category.menu.details.review": "Nibh nibh quis dolor in. Etiam cras nisi, turpis quisque diam",
+  "category.menu.details.PerHour": "€ por hora"
 }

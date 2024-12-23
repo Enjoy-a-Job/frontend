@@ -181,30 +181,82 @@ export const CATEGORIES_MENU = () => {
   return [
     {
       title: t('category.menu.DIY'),
+      icon: SvgIcons.CategoryMenuDetails,
+      data: CATEGORIES_MENU_DETAILS(),
     },
     {
       title: t('category.menu.Electricity'),
+      icon: SvgIcons.CategoryMenuDetails,
+      data: CATEGORIES_MENU_DETAILS(),
     },
     {
       title: t('category.menu.Masonry'),
+      icon: SvgIcons.CategoryMenuDetails,
+      data: CATEGORIES_MENU_DETAILS(),
     },
     {
       title: t('category.menu.Arrangements'),
+      icon: SvgIcons.CategoryMenuDetails,
+      data: CATEGORIES_MENU_DETAILS(),
     },
     {
       title: t('category.menu.Plumbing'),
+      icon: SvgIcons.CategoryMenuDetails,
+      data: CATEGORIES_MENU_DETAILS(),
     },
     {
       title: t('category.menu.Paint'),
+      icon: SvgIcons.CategoryMenuDetails,
+      data: CATEGORIES_MENU_DETAILS(),
     },
     {
       title: t('category.menu.Mounting'),
+      icon: SvgIcons.CategoryMenuDetails,
+      data: CATEGORIES_MENU_DETAILS(),
     },
     {
       title: t('category.menu.Gardening'),
+      icon: SvgIcons.CategoryMenuDetails,
+      data: CATEGORIES_MENU_DETAILS(),
     },
     {
       title: t('category.menu.Locksmith'),
+      icon: SvgIcons.CategoryMenuDetails,
+      data: CATEGORIES_MENU_DETAILS(),
     }
   ]
+}
+
+export const CATEGORIES_MENU_DETAILS = () => {
+  const { t } = useTranslation();
+  return [
+    {
+      name: "Javier Sanchez Ostiz",
+      review: t("category.menu.details.review"),
+      rate: 20,
+      rating: 4,
+      picture: SvgIcons.Javier
+    },
+    {
+      name: "Benita Wilson",
+      review: t("category.menu.details.review"),
+      rate: 30,
+      rating: 3,
+      picture: SvgIcons.Benita
+    },
+    {
+      name: "Ralph Edwards",
+      review: t("category.menu.details.review"),
+      rate: 20,
+      rating: 4,
+      picture: SvgIcons.Ralph
+    },
+    {
+      name: "Ralph Edwards",
+      review: t("category.menu.details.review"),
+      rate: 20,
+      rating: 4,
+      picture: SvgIcons.Ralph
+    }
+  ];
 }

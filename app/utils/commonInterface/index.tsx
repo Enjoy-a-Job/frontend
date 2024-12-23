@@ -10,6 +10,16 @@ export interface CategoriesItem {
   icon: React.FC<React.SVGProps<SVGSVGElement>>;
 }
 
+export interface CategoriesDetailsMenu {
+  name: string;
+  review: string;
+  rate: number;
+  rating: number;
+  picture: React.FC<React.SVGProps<SVGSVGElement>>;
+}
+
 export interface CategoriesMenu {
   title: string;
+  icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  data: Array<CategoriesDetailsMenu>;
 }
