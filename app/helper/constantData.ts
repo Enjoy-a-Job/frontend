@@ -110,55 +110,101 @@ export const ALL_CATEGORIES_DATA = () => {
   return [
     {
       title: t('category.Handyman'),
-      icon: SvgIcons.CategoryHandyman
+      icon: SvgIcons.CategoryHandyman,
+      menu: CATEGORIES_MENU(),
     },
     {
       title: t('category.Care'),
-      icon: SvgIcons.CategoryCare
+      icon: SvgIcons.CategoryCare,
+      menu: CATEGORIES_MENU(),
     },
     {
       title: t('category.Beauty'),
-      icon: SvgIcons.CategoryBeautyBeauty
+      icon: SvgIcons.CategoryBeautyBeauty,
+      menu: CATEGORIES_MENU(),
     },
     {
       title: t('category.ClothingFootwear'),
-      icon: SvgIcons.CategoryClothingFootwear
+      icon: SvgIcons.CategoryClothingFootwear,
+      menu: CATEGORIES_MENU(),
     },
     {
       title: t('category.Sports'),
-      icon: SvgIcons.CategorySports
+      icon: SvgIcons.CategorySports,
+      menu: CATEGORIES_MENU(),
     },
     {
       title: t('category.Classes'),
-      icon: SvgIcons.CategoryClasses
+      icon: SvgIcons.CategoryClasses,
+      menu: CATEGORIES_MENU(),
     },
     {
       title: t('category.Pets'),
-      icon: SvgIcons.CategoryPets
+      icon: SvgIcons.CategoryPets,
+      menu: CATEGORIES_MENU(),
     },
     {
       title: t('category.Mechanics'),
-      icon: SvgIcons.CategoryMechanics
+      icon: SvgIcons.CategoryMechanics,
+      menu: CATEGORIES_MENU(),
     },
     {
       title: t('category.Transportation'),
-      icon: SvgIcons.CategoryTransportation
+      icon: SvgIcons.CategoryTransportation,
+      menu: CATEGORIES_MENU(),
     },
     {
       title: t('category.Audiovisual'),
-      icon: SvgIcons.CategoryAudiovisual
+      icon: SvgIcons.CategoryAudiovisual,
+      menu: CATEGORIES_MENU(),
     },
     {
       title: t('category.TouristGuide'),
-      icon: SvgIcons.CategoryTourGuide
+      icon: SvgIcons.CategoryTourGuide,
+      menu: CATEGORIES_MENU(),
     },
     {
       title: t('category.Adviser'),
-      icon: SvgIcons.CategoryConsulting
+      icon: SvgIcons.CategoryConsulting,
+      menu: CATEGORIES_MENU(),
     },
     {
       title: t('category.Home'),
-      icon: SvgIcons.CategoryHome
+      icon: SvgIcons.CategoryHome,
+      menu: CATEGORIES_MENU(),
     },
   ];
 };
+
+export const CATEGORIES_MENU = () => {
+  const { t } = useTranslation();
+  return [
+    {
+      title: t('category.menu.DIY'),
+    },
+    {
+      title: t('category.menu.Electricity'),
+    },
+    {
+      title: t('category.menu.Masonry'),
+    },
+    {
+      title: t('category.menu.Arrangements'),
+    },
+    {
+      title: t('category.menu.Plumbing'),
+    },
+    {
+      title: t('category.menu.Paint'),
+    },
+    {
+      title: t('category.menu.Mounting'),
+    },
+    {
+      title: t('category.menu.Gardening'),
+    },
+    {
+      title: t('category.menu.Locksmith'),
+    }
+  ]
+}

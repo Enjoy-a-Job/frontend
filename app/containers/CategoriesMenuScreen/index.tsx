@@ -1,21 +1,22 @@
+import { RouterProps } from '@/app/utils/commonInterface';
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
-import style from './style';
 import { useTranslation } from 'react-i18next';
-import { RouterProps } from '@/app/utils/commonInterface';
+import style from './style';
 import SvgIcons from '@/app/assets/svgIcons';
-import { ALL_CATEGORIES_DATA } from '@/app/helper/constantData';
-import AllCategoriesList from '@/app/components/AllCategoriesList';
-import { normalize } from '@/app/helper/responsiveScreen';
+import CategoriesMenu from '@/app/components/CategoriesMenu';
+import { normalize } from "@/app/helper/responsiveScreen";
 
-const Categories = ({ navigation }: RouterProps): React.ReactElement => {
+const CategoriesMenuScreen = ({
+  navigation,
+  route
+}: RouterProps): React.ReactElement => {
   const { t } = useTranslation();
-
-  const allCategoriesData = ALL_CATEGORIES_DATA();
+  const { index }: any = route.params;
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      headerTitle: t('category.Title'),
+      headerTitle: t('category.menu.title'),
       headerTitleStyle: style.headerTitle,
       headerStatusBarHeight: normalize(20),
       headerLeft: () => (
@@ -32,10 +33,10 @@ const Categories = ({ navigation }: RouterProps): React.ReactElement => {
   return (
     <View style={style.container}>
       <View style={style.subContainer}>
-        <AllCategoriesList data={allCategoriesData} navigation={navigation} />
+        <CategoriesMenu index={index} />
       </View>
     </View>
   );
 };
 
-export default Categories;
+export default CategoriesMenuScreen;

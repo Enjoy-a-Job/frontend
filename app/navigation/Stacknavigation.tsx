@@ -9,6 +9,7 @@ import colors from '@/app/assets/colors';
 import MobileVerification from '@/app/containers/MobileVerification';
 import { BottomTabNavigation } from './BottomTab/BottomTabNavigation';
 import Categories from '@/app/containers/Categories';
+import CategoriesMenuScreen from '@/app/containers/CategoriesMenuScreen';
 
 const options = {
   headerShown: true,
@@ -17,8 +18,8 @@ const options = {
     backgroundColor: colors.background,
     elevation: 0,
     shadowOpacity: 0,
-    borderBottomWidth: 0,
-  },
+    borderBottomWidth: 0
+  }
 } as StackNavigationOptions;
 
 export default function Stacknavigation() {
@@ -58,6 +59,11 @@ export default function Stacknavigation() {
         <Stack.Screen
           name={RouteName.bottomTab}
           component={BottomTabNavigation}
+        />
+        <Stack.Screen
+          name={RouteName.categoriesMenuScreen}
+          component={CategoriesMenuScreen}
+          options={options}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -11,6 +11,7 @@ export enum RouteName {
   registerScreen = 'RegisterScreen',
   mobileVerificationScreen = 'mobileVerificationScreen',
   categoriesScreen = 'CategoriesScreen',
+  categoriesMenuScreen = 'CategoriesMenuScreen',
 }
 
 export type RouteStackParamList = {
@@ -26,4 +27,5 @@ export type RouteStackParamList = {
   registerScreen: undefined;
   mobileVerificationScreen: undefined;
   categoriesScreen: undefined;
+  categoriesMenuScreen: undefined;
 };

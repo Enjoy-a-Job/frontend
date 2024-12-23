@@ -1,6 +1,6 @@
 import { Platform, StyleSheet } from 'react-native';
-import colors from '../../assets/colors';
-import { wp, hp } from '../../helper/responsiveScreen';
+import colors from '@/app/assets/colors';
+import { wp, hp, normalize } from '@/app/helper/responsiveScreen';
 
 export default StyleSheet.create({
   container: {
@@ -41,6 +41,7 @@ export default StyleSheet.create({
   headerTitle: {
     color: colors.black,
     fontFamily: 'inter-bold',
+    fontSize: normalize(18)
   },
   profile: {
     width: 128,

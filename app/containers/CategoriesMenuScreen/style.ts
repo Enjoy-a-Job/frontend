@@ -24,6 +24,6 @@ export default StyleSheet.create({
   headerTitle: {
     color: colors.black,
     fontFamily: 'inter-medium',
-    fontSize: normalize(18),
+    fontSize: normalize(18)
   },
 })

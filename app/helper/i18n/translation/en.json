@@ -66,5 +66,17 @@
   "category.Transportation": "Transportation",
   "category.Audiovisual": "Audiovisual",
   "category.Adviser": "Adviser",
-  "category.Home": "Home"
+  "category.Home": "Home",
+
+  "category.menu.title": "All categories",
+  "category.menu.DIY": "DIY",
+  "category.menu.Electricity": "Electricity",
+  "category.menu.Masonry": "Masonry",
+  "category.menu.Arrangements": "Arrangements",
+  "category.menu.Plumbing": "Plumbing",
+  "category.menu.Paint": "Paint",
+  "category.menu.Mounting": "Mounting",
+  "category.menu.Gardening": "Gardening",
+  "category.menu.Locksmith": "Locksmith",
+  "category.menu.button.title": "You can't find what you need"
 }
