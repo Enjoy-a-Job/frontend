@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, Pressable } from 'react-native';
 import styles from './style';
 import { FontText } from '..';
 import { normalize } from '@/app/helper/responsiveScreen';
@@ -8,11 +8,12 @@ import { CategoriesItem } from '@/app/utils/commonInterface';
 
 interface Props {
   item: CategoriesItem;
+  onPress?: () => void;
 }
 const Item: React.FC<Props> = (props: Props) => {
-  const { item } = props;
+  const { item, onPress } = props;
   return (
-    <TouchableOpacity style={styles.renderView}>
+    <Pressable style={styles.renderView} onPress={onPress}>
       <View style={styles.iconView}>
         <item.icon />
       </View>
@@ -27,7 +28,7 @@ const Item: React.FC<Props> = (props: Props) => {
           {item.title}
         </FontText>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 

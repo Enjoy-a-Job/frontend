@@ -28,6 +28,7 @@ const Profile = ({ navigation }: any) => {
     navigation.setOptions({
       headerTitle: t("profile"),
       headerTitleStyle: s.headerTitle,
+      headerStatusBarHeight: normalize(30),
       headerLeft: () => (
         <TouchableOpacity
           style={s.backIcon}

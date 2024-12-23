@@ -66,5 +66,17 @@
   "category.Transportation": "Transportes",
   "category.Audiovisual": "Audiovisual",
   "category.Adviser": "Asesor",
-  "category.Home": "Hogar"
+  "category.Home": "Hogar",
+
+  "category.menu.title": "Todas las categorias",
+  "category.menu.DIY": "Bricolaje",
+  "category.menu.Electricity": "Electricidad",
+  "category.menu.Masonry": "Albañilería",
+  "category.menu.Arrangements": "Arreglos",
+  "category.menu.Plumbing": "Fontanería",
+  "category.menu.Paint": "Pintura",
+  "category.menu.Mounting": "Montaje",
+  "category.menu.Gardening": "Jardinería",
+  "category.menu.Locksmith": "Cerrajería",
+  "category.menu.button.title": "No encuentras lo que necesitas"
 }
