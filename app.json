@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/splash/adaptive.png",
         "backgroundColor": "#0A22FB"
-      }
+      },
+      "package": "com.spielberg.app"
     },
     "web": {
       "bundler": "metro",
