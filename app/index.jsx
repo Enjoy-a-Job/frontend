@@ -5,7 +5,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
-
+import '@/app/helper/i18n';
 import useFonts from '@/app/assets/fonts';
 import Stacknavigation from '@/app/navigation/Stacknavigation';
 import { DisplayAlertProvider } from '@/app/contexts/DisplayAlert';
