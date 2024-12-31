@@ -79,6 +79,11 @@
       "Locksmith": "Locksmith",
       "button": {
         "title": "You can't find what you need"
+      },
+      "details":{
+        "Professionals": "Professionals",
+        "review": "Nibh nibh quis dolor in. Etiam cras nisi, turpis quisque diam",
+        "PerHour": "€ per hour"
       }
     }
   }

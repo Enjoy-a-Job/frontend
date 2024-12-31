@@ -1,21 +1,22 @@
 import React from 'react';
-import { View, Pressable, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import styles from './style';
 import { Button, FontText } from '..';
 import { normalize } from '@/app/helper/responsiveScreen';
 import colors from '@/app/assets/colors';
 import Item from './item';
 import { useTranslation } from 'react-i18next';
-import { ALL_CATEGORIES_DATA } from "@/app/helper/constantData";
+import { ALL_CATEGORIES_DATA } from '@/app/helper/constantData';
+import { RouteName } from '@/app/helper/routeName';
 
 const CategoriesMenu = (props: any) => {
-  const { index } = props;
+  const { index, navigation } = props;
   const menuData = ALL_CATEGORIES_DATA();
   const { icon, title, menu } = menuData[index];
   const { t } = useTranslation();
 
   return (
-    <Pressable style={styles.renderView}>
+    <View style={styles.renderView}>
       <View style={styles.iconPaddingView}>
         <View style={styles.iconView}>{icon({})}</View>
       </View>
@@ -34,7 +35,17 @@ const CategoriesMenu = (props: any) => {
             <FlatList
               data={menu}
               keyExtractor={(item, index) => index.toString()}
-              renderItem={({ item }) => <Item item={item} />}
+              renderItem={({ item, index: menuIndex }) => (
+                <Item
+                  item={item}
+                  onPress={() =>
+                    navigation.navigate(RouteName.categoriesMenuDetailsScreen, {
+                      categoryIndex: index,
+                      menuIndex
+                    })
+                  }
+                />
+              )}
               showsVerticalScrollIndicator={false}
               contentContainerStyle={styles.contentContainerStyle}
             />
@@ -55,7 +66,7 @@ const CategoriesMenu = (props: any) => {
           </Button>
         </View>
       </View>
-    </Pressable>
+    </View>
   );
 };
 

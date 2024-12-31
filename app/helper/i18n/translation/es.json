@@ -80,6 +80,11 @@
       "Locksmith": "Cerrajería",
       "button": {
         "title": "No encuentras lo que necesitas"
+      },
+      "details": {
+        "Professionals": "Profesionales",
+        "review": "Nibh nibh quis dolor in. Etiam cras nisi, turpis quisque diam",
+        "PerHour": "€ por hora"
       }
     }
   }

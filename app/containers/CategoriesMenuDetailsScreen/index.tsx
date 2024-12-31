@@ -4,19 +4,24 @@ import { View, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import style from './style';
 import SvgIcons from '@/app/assets/svgIcons';
-import CategoriesMenu from '@/app/components/CategoriesMenu';
-import { normalize } from "@/app/helper/responsiveScreen";
+import { normalize } from '@/app/helper/responsiveScreen';
+import { FontText } from '@/app/components';
+import { ALL_CATEGORIES_DATA } from '@/app/helper/constantData';
+import CategoriesMenuDetails from "@/app/components/CategoriesMenuDetails";
 
-const CategoriesMenuScreen = ({
+const CategoriesMenuDetailsScreen = ({
   navigation,
   route
 }: RouterProps): React.ReactElement => {
   const { t } = useTranslation();
-  const { index }: any = route.params;
+  const { categoryIndex, menuIndex }: any = route.params;
+  const menuDetailsData = ALL_CATEGORIES_DATA();
+  const { menu } = menuDetailsData[categoryIndex];
+  const { title, icon, data } = menu[menuIndex];
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      headerTitle: t('category.menu.title'),
+      headerTitle: title,
       headerTitleStyle: style.headerTitle,
       headerStatusBarHeight: normalize(20),
       headerLeft: () => (
@@ -33,10 +38,16 @@ const CategoriesMenuScreen = ({
   return (
     <View style={style.container}>
       <View style={style.subContainer}>
-        <CategoriesMenu index={index} navigation={navigation} />
+        <View style={style.iconView}>
+          {icon({ width: '100%'})}
+        </View>
+        <FontText size={normalize(16)} style={style.title} pLeft={normalize(2)}>
+          {t('category.menu.details.Professionals')}
+        </FontText>
+        <CategoriesMenuDetails data={data} />
       </View>
     </View>
   );
 };
 
-export default CategoriesMenuScreen;
+export default CategoriesMenuDetailsScreen;
