@@ -26,7 +26,7 @@ const Profile = ({ navigation }: any) => {
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      headerTitle: t("profile"),
+      headerTitle: t("profileTitle"),
       headerTitleStyle: s.headerTitle,
       headerStatusBarHeight: normalize(30),
       headerLeft: () => (
