@@ -86,5 +86,14 @@
         "PerHour": "€ per hour"
       }
     }
+  },
+  "course_details": {
+    "name": "Bryan Sanchez",
+    "tag": "services performed",
+    "aboutMe": "About me",
+    "description": "Ironing service at home, with special care we are professionals more Ironing service at home, with special care we are professionals more",
+    "hour": "hour",
+    "availability": "Check Availability",
+    "proposal": "proposal"
   }
 }

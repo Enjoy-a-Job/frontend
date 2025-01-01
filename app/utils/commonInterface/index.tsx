@@ -23,3 +23,7 @@ export interface CategoriesMenu {
   icon: React.FC<React.SVGProps<SVGSVGElement>>;
   data: Array<CategoriesDetailsMenu>;
 }
+
+export interface CourseDetailIcon {
+  icon: React.FC<React.SVGProps<SVGSVGElement>>;
+}
