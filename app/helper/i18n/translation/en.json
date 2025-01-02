@@ -80,7 +80,7 @@
       "button": {
         "title": "You can't find what you need"
       },
-      "details":{
+      "details": {
         "Professionals": "Professionals",
         "review": "Nibh nibh quis dolor in. Etiam cras nisi, turpis quisque diam",
         "PerHour": "€ per hour"
@@ -95,5 +95,20 @@
     "hour": "hour",
     "availability": "Check Availability",
     "proposal": "proposal"
+  },
+  "chat": {
+    "name": "Angela Young",
+    "status": "Online",
+    "statusOffline": "offline",
+    "message": "Message...",
+    "time": "Just Now",
+    "recentMessage": "Hello Sir, How are you?",
+    "bot": "bot",
+    "user": "user",
+    "text1": "Can we talk about the project other platform",
+    "text2": "Yes sure, please wait",
+    "text3": "At first to know about your project details",
+    "text4": "Oh, Hello Angela Young",
+    "text5": "Hello, we are trying to design UI/UX for the app"
   }
 }

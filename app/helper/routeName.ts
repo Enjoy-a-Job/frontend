@@ -14,6 +14,7 @@ export enum RouteName {
   categoriesMenuScreen = 'CategoriesMenuScreen',
   categoriesMenuDetailsScreen = 'CategoriesMenuDetailsScreen',
   courseDetailsScreen = 'CourseDetailsScreen',
+  chatScreen = 'ChatScreen',
 }
 
 export type RouteStackParamList = {
@@ -32,4 +33,5 @@ export type RouteStackParamList = {
   categoriesMenuScreen: undefined;
   categoriesMenuDetailsScreen: undefined;
   courseDetailsScreen: undefined;
+  chatScreen: undefined;
 };

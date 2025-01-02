@@ -263,46 +263,116 @@ export const CATEGORIES_MENU_DETAILS = () => {
 
 export const COURSE_DETAILS_DATA = () => {
   const { t } = useTranslation();
-  return (
+  return {
+    name: t('course_details.name'),
+    tag: t('course_details.tag'),
+    aboutMe: t('course_details.aboutMe'),
+    description: t('course_details.description'),
+    hour: t('course_details.hour'),
+    availability: t('course_details.availability'),
+    proposal: t('course_details.proposal'),
+    image: SvgIcons.ProfileIcon,
+    numberOfService: 56,
+    numberOfRating: 27,
+    rating: 4.9,
+    amount: 11,
+    ratingIcon: SvgIcons.StarWithBackGround,
+    courseImage: [
+      {
+        icon: SvgIcons.Course1
+      },
+      {
+        icon: SvgIcons.Course2
+      },
+      {
+        icon: SvgIcons.Course1
+      }
+    ],
+    suggestCourse: [
+      {
+        title: t('category.Handyman'),
+        icon: SvgIcons.CategoryHandyman
+      },
+      {
+        title: t('category.Sports'),
+        icon: SvgIcons.CategorySports
+      },
+      {
+        title: t('category.Classes'),
+        icon: SvgIcons.CategoryClasses
+      }
+    ]
+  };
+};
+
+export const CHAT_INBOX = () => {
+  const { t } = useTranslation();
+  return [
     {
-      name: t('course_details.name'),
-      tag: t('course_details.tag'),
-      aboutMe: t('course_details.aboutMe'),
-      description: t('course_details.description'),
-      hour: t('course_details.hour'),
-      availability: t('course_details.availability'),
-      proposal: t('course_details.proposal'),
-      image: SvgIcons.ProfileIcon,
-      numberOfService: 56,
-      numberOfRating: 27,
-      rating: 4.9,
-      amount: 11,
-      ratingIcon: SvgIcons.StarWithBackGround,
-      courseImage: [
-        {
-          icon: SvgIcons.Course1
-        },
-        {
-          icon: SvgIcons.Course2
-        },
-        {
-          icon: SvgIcons.Course1
-        }
-      ],
-      suggestCourse: [
-        {
-          title: t('category.Handyman'),
-          icon: SvgIcons.CategoryHandyman
-        },
-        {
-          title: t('category.Sports'),
-          icon: SvgIcons.CategorySports
-        },
-        {
-          title: t('category.Classes'),
-          icon: SvgIcons.CategoryClasses
-        }
-      ]
+      name: t('chat.name'),
+      status: t('chat.status'),
+      message: t('chat.message'),
+      time: t('chat.time'),
+      recentMessage: t('chat.recentMessage'),
+      icon: SvgIcons.ChatIcon,
+      chat: CHAT_MESSAGES()
+    },
+    {
+      name: t('chat.name'),
+      status: t('chat.statusOffline'),
+      message: t('chat.message'),
+      time: t('chat.time'),
+      recentMessage: t('chat.recentMessage'),
+      icon: SvgIcons.ChatIcon,
+      chat: CHAT_MESSAGES()
     }
-  )
+  ];
+};
+
+export const CHAT_MESSAGES = () => {
+  const { t } = useTranslation();
+  return [
+    {
+      id: 1,
+      text: '',
+      sender: t('chat.bot'),
+      time: '',
+      isTyping: true
+    },
+    {
+      id: 2,
+      text: t('chat.text1'),
+      sender: t('chat.user'),
+      time: '09:27 am',
+      isTyping: false
+    },
+    {
+      id: 3,
+      text: t('chat.text2'),
+      sender: t('chat.bot'),
+      time: '09:26 am',
+      isTyping: false
+    },
+    {
+      id: 4,
+      text: t('chat.text3'),
+      sender: t('chat.user'),
+      time: '09:24 am',
+      isTyping: false
+    },
+    {
+      id: 5,
+      text: t('chat.text4'),
+      sender: t('chat.user'),
+      time: '',
+      isTyping: false
+    },
+    {
+      id: 6,
+      text: t('chat.text5'),
+      sender: t('chat.bot'),
+      time: '08:22 am',
+      isTyping: false
+    }
+  ];
 };

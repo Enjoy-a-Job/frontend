@@ -15,6 +15,7 @@ import Categories from '@/app/containers/Categories';
 import CategoriesMenuScreen from '@/app/containers/CategoriesMenuScreen';
 import CategoriesMenuDetailsScreen from '@/app/containers/CategoriesMenuDetailsScreen';
 import CourseDetailsScreen from '@/app/containers/CourseDetailsScreen';
+import ChatScreen from '@/app/containers/ChatScreen';
 
 const options = {
   headerShown: true,
@@ -78,6 +79,11 @@ export default function Stacknavigation() {
         <Stack.Screen
           name={RouteName.courseDetailsScreen}
           component={CourseDetailsScreen}
+          options={options}
+        />
+        <Stack.Screen
+          name={RouteName.chatScreen}
+          component={ChatScreen}
           options={options}
         />
       </Stack.Navigator>

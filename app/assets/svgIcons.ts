@@ -58,6 +58,9 @@ import Star from './svgs/Star.svg'
 import EmptyStar from './svgs/EmptyStar.svg'
 import Heart from './svgs/Heart.svg'
 import StarWithBackGround from './svgs/StarWithBackGround.svg'
+import ChatIcon from './svgs/ChatIcon.svg'
+import Send from './svgs/Send.svg'
+import Search from './svgs/Search.svg'
 
 const icons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } = {
   ShowIcon,
@@ -119,7 +122,10 @@ const icons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } = {
   Star,
   EmptyStar,
   Heart,
-  StarWithBackGround
+  StarWithBackGround,
+  ChatIcon,
+  Send,
+  Search
 };
 
 export default icons;
