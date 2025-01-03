@@ -44,7 +44,7 @@ const CategoriesMenuDetailsScreen = ({
         <FontText size={normalize(16)} style={style.title} pLeft={normalize(2)}>
           {t('category.menu.details.Professionals')}
         </FontText>
-        <CategoriesMenuDetails data={data} />
+        <CategoriesMenuDetails data={data} navigation={navigation} />
       </View>
     </View>
   );

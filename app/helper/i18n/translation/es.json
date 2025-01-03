@@ -87,5 +87,14 @@
         "PerHour": "€ por hora"
       }
     }
+  },
+  "course_details": {
+    "name": "Bryan Sanchez",
+    "tag": "servicios realizados",
+    "aboutMe": "Sobre mí",
+    "description": "Servicio de planchado a domicilio, con cuidado especial somos profesionales  más Servicio de planchado a domicilio, con cuidado especial somos profesionales  más",
+    "hour": "hora",
+    "availability": "Ver Disponibilidad",
+    "proposal": "Hacer propuesta"
   }
 }

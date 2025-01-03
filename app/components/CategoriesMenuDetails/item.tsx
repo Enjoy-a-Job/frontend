@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import styles from './style';
 import { CategoriesDetailsMenu } from '@/app/utils/commonInterface';
@@ -14,9 +14,9 @@ interface Props {
 
 const Item: React.FC<Props> = (props: Props) => {
   const { t } = useTranslation();
-  const { item } = props;
+  const { item, onPress } = props;
   return (
-    <View style={styles.renderView}>
+    <TouchableOpacity style={styles.renderView} onPress={onPress}>
       <View style={styles.subRenderView}>
         <View style={styles.inRenderView}>
           <View style={styles.iconView}>
@@ -39,7 +39,7 @@ const Item: React.FC<Props> = (props: Props) => {
           {item.review}
         </FontText>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

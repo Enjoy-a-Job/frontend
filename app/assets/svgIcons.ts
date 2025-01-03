@@ -56,6 +56,8 @@ import Ralph from './svgs/Ralph.svg'
 import CategoryMenuDetails from './svgs/CategoryMenuDetails.svg'
 import Star from './svgs/Star.svg'
 import EmptyStar from './svgs/EmptyStar.svg'
+import Heart from './svgs/Heart.svg'
+import StarWithBackGround from './svgs/StarWithBackGround.svg'
 
 const icons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } = {
   ShowIcon,
@@ -115,7 +117,9 @@ const icons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } = {
   Ralph,
   CategoryMenuDetails,
   Star,
-  EmptyStar
+  EmptyStar,
+  Heart,
+  StarWithBackGround
 };
 
 export default icons;

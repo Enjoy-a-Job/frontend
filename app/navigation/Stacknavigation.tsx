@@ -1,4 +1,7 @@
-import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  StackNavigationOptions
+} from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { RouteName } from '@/app/helper/routeName';
 
@@ -11,6 +14,7 @@ import { BottomTabNavigation } from './BottomTab/BottomTabNavigation';
 import Categories from '@/app/containers/Categories';
 import CategoriesMenuScreen from '@/app/containers/CategoriesMenuScreen';
 import CategoriesMenuDetailsScreen from '@/app/containers/CategoriesMenuDetailsScreen';
+import CourseDetailsScreen from '@/app/containers/CourseDetailsScreen';
 
 const options = {
   headerShown: true,
@@ -66,9 +70,14 @@ export default function Stacknavigation() {
           component={CategoriesMenuScreen}
           options={options}
         />
-      <Stack.Screen
+        <Stack.Screen
           name={RouteName.categoriesMenuDetailsScreen}
           component={CategoriesMenuDetailsScreen}
+          options={options}
+        />
+        <Stack.Screen
+          name={RouteName.courseDetailsScreen}
+          component={CourseDetailsScreen}
           options={options}
         />
       </Stack.Navigator>
