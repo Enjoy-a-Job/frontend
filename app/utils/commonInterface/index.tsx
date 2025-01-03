@@ -27,3 +27,21 @@ export interface CategoriesMenu {
 export interface CourseDetailIcon {
   icon: React.FC<React.SVGProps<SVGSVGElement>>;
 }
+
+export interface Inbox {
+  name: string;
+  status: string;
+  message: string;
+  time: string;
+  recentMessage: string;
+  icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  chat: Array<Chat>;
+}
+
+export interface Chat {
+  id: number;
+  text: string;
+  sender: string;
+  time: string;
+  isTyping: boolean;
+}

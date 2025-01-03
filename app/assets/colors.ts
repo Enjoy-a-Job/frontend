@@ -10,6 +10,8 @@ export const colors = {
   borderColor: '#CED5DA',
   grayBorderColor: 'rgba(125, 133, 141, 0.3)',
   tabIcon: '#F96E7A',
+  lightGray: '#F4F4F4',
+  dotGray: "#ABAAB1"
 };
 
 export default colors;

@@ -1,11 +1,14 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import React from 'react';
-import SvgIcons from '../../assets/svgIcons';
 import s from './style';
 import { useTranslation } from 'react-i18next';
+import InboxList from "@/app/components/InboxList";
+import { CHAT_INBOX } from "@/app/helper/constantData";
+import SvgIcons from '@/app/assets/svgIcons';
 
 const Inbox = ({navigation}: any) => {
   const { t } = useTranslation();
+  const chat = CHAT_INBOX();
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -14,16 +17,29 @@ const Inbox = ({navigation}: any) => {
       headerLeft: () => (
         <TouchableOpacity
           style={s.backIcon}
-          onPress={() => navigation.goBack()}>
+          onPress={() => navigation.goBack()}
+        >
           <SvgIcons.BackIcon />
         </TouchableOpacity>
       ),
+      headerRight: () => (
+        <TouchableOpacity
+          style={s.searchIcon}
+          onPress={() => navigation.goBack()}
+        >
+          <SvgIcons.Search />
+        </TouchableOpacity>
+      )
     });
   }, [navigation]);
 
   return (
     <View style={s.container}>
-      <Text>{t('inbox')}</Text>
+      <View style={s.subContainer}>
+        <View style={s.view}>
+          <InboxList data={chat} navigation={navigation} />
+        </View>
+      </View>
     </View>
   );
 };

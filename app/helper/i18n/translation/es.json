@@ -96,5 +96,20 @@
     "hour": "hora",
     "availability": "Ver Disponibilidad",
     "proposal": "Hacer propuesta"
+  },
+  "chat": {
+    "name": "Angela Young",
+    "status": "En línea",
+    "statusOffline": "offline",
+    "message": "Mensaje...",
+    "time": "Just Now",
+    "recentMessage": "Hola señor, ¿cómo está?",
+    "bot": "bot",
+    "user": "usuaria",
+    "text1": "¿Podemos hablar del proyecto en otras plataformas?",
+    "text2": "Si segura, por favor espera",
+    "text3": "Primero, conozca los detalles de su proyecto.",
+    "text4": "Oh, hola Angela Young",
+    "text5": "Hola, estamos intentando diseñar UI/UX para la aplicación."
   }
 }
